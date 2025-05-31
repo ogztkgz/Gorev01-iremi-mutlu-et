@@ -1,0 +1,1382 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Görev 01 İremi Mutlu Et</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(to bottom right, #ffe4ec, #f3e8ff, #e0e7ff);
+      margin: 0;
+      padding: 2rem;
+      min-height: 100vh;
+      position: relative;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    .card {
+      background: white;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+    .header {
+      text-align: center;
+    }
+    .header-icons {
+      font-size: 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .quote {
+      font-size: 1.2rem;
+      text-align: center;
+      min-height: 60px;
+    }
+    .button {
+      display: inline-block;
+      padding: 0.6rem 1.2rem;
+      margin-top: 1rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 0.5rem;
+      color: white;
+      background: linear-gradient(to right, #a855f7, #ec4899);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .button:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+    }
+    .badge-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    .badge {
+      background: linear-gradient(to right, #bfdbfe, #ddd6fe);
+      color: #6b21a8;
+      padding: 0.5rem 1rem;
+      border-radius: 1rem;
+      font-size: 0.9rem;
+    }
+    .grid {
+      display: grid;
+      gap: 1rem;
+    }
+    @media(min-width: 768px) {
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media(min-width: 1024px) {
+      .grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    .activity-title {
+      font-weight: bold;
+      margin: 0.5rem 0;
+    }
+    .footer {
+      text-align: center;
+      font-size: 1.1rem;
+    }
+    .pulse {
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.1); opacity: 0.6; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    /* Mektup Bölümü Stilleri */
+    .mektup-kutusu {
+      background: white;
+      border-radius: 1rem;
+      padding: 2rem;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      position: relative;
+      border: 1px solid #f3e8ff;
+    }
+    .mektup-icerik {
+      font-family: 'Caveat', cursive;
+      font-size: 1.4rem;
+      line-height: 1.6;
+      color: #5b21b6;
+      text-align: center;
+      white-space: pre-line;
+    }
+    .mektup-imza {
+      font-family: 'Caveat', cursive;
+      font-size: 1.8rem;
+      text-align: right;
+      margin-top: 1.5rem;
+      color: #ec4899;
+    }
+    .mektup-cicek {
+      position: absolute;
+      top: -15px;
+      right: -10px;
+      opacity: 0.8;
+    }
+    /* Ortam Düğmeleri */
+    .environment-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.8rem 1.5rem;
+      background: linear-gradient(to right, #60a5fa, #a78bfa);
+    }
+    .environment-button:hover {
+      background: linear-gradient(to right, #3b82f6, #8b5cf6);
+    }
+    .photo-card {
+      background: white;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+    .photo-container {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+    .photo-box {
+      position: relative;
+      width: 150px;
+      height: 150px;
+      border-radius: 0.5rem;
+      overflow: hidden;
+    }
+    .photo-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 0.5rem;
+    }
+    .photo-upload-btn {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.5);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 0 0 0.5rem 0.5rem;
+      cursor: pointer;
+    }
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      height: 0;
+      overflow: hidden;
+      max-width: 100%;
+      margin: 1rem 0;
+    }
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 0.5rem;
+    }
+    .music-container {
+      margin: 1rem 0;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      border-radius: 1rem;
+      overflow: hidden;
+    }
+    .night {
+      position: fixed;
+      left: 50%;
+      top: 0;
+      transform: translateX(-50%);
+      width: 100%;
+      height: 100%;
+      filter: blur(0.1vmin);
+      background-image: radial-gradient(ellipse at top, transparent 0%, var(--dark-color)),
+        radial-gradient(ellipse at bottom, var(--dark-color), rgba(145, 233, 255, 0.2)),
+        repeating-linear-gradient(220deg, rgb(0, 0, 0) 0px, rgb(0, 0, 0) 19px, transparent 19px, transparent 22px),
+        repeating-linear-gradient(189deg, rgb(0, 0, 0) 0px, rgb(0, 0, 0) 19px, transparent 19px, transparent 22px),
+        repeating-linear-gradient(148deg, rgb(0, 0, 0) 0px, rgb(0, 0, 0) 19px, transparent 19px, transparent 22px),
+        linear-gradient(90deg, rgb(0, 255, 250), rgb(240, 240, 240));
+    }
+    .flowers {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%) scale(0.4);
+      z-index: -1;
+      pointer-events: none;
+    }
+    .flower {
+      position: absolute;
+      bottom: 10vmin;
+      transform-origin: bottom center;
+      z-index: 10;
+      --fl-speed: 0.8s;
+    }
+    .flower--1 {
+      animation: moving-flower-1 4s linear infinite;
+    }
+    .flower--2 {
+      left: 50%;
+      transform: rotate(20deg);
+      animation: moving-flower-2 4s linear infinite;
+    }
+    .flower--3 {
+      left: 50%;
+      transform: rotate(-15deg);
+      animation: moving-flower-3 4s linear infinite;
+    }
+    @keyframes moving-flower-1 {
+      0%, 100% { transform: rotate(2deg); }
+      50% { transform: rotate(-2deg); }
+    }
+    @keyframes moving-flower-2 {
+      0%, 100% { transform: rotate(18deg); }
+      50% { transform: rotate(14deg); }
+    }
+    @keyframes moving-flower-3 {
+      0%, 100% { transform: rotate(-18deg); }
+      50% { transform: rotate(-20deg) rotateY(-10deg); }
+    }
+    .flower__leafs {
+      position: relative;
+      animation: blooming-flower 2s backwards;
+    }
+    @keyframes blooming-flower {
+      0% { transform: scale(0); }
+    }
+    .flower__leaf {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 8vmin;
+      height: 11vmin;
+      border-radius: 51% 49% 47% 53% / 44% 45% 55% 69%;
+      background-color: #a7ffee;
+      background-image: linear-gradient(to top, #54b8aa, #a7ffee);
+      transform-origin: bottom center;
+      opacity: 0.9;
+      box-shadow: inset 0 0 2vmin rgba(255, 255, 255, 0.5);
+    }
+    .not-loaded * {
+      animation-play-state: paused !important;
+    }
+
+    /* Kalp Çizimi Stilleri */
+    #heartOverlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      display: none;
+      z-index: 9999;
+    }
+
+    #heartCanvas {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .photo-container {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+    
+    .photo-box {
+      transition: opacity 0.3s ease;
+    }
+    
+    .story-content {
+      transition: opacity 0.3s ease;
+    }
+    
+    #storyText {
+      min-height: 80px;
+      transition: opacity 0.3s ease;
+    }
+
+    /* Tam ekran hikaye stilleri */
+    #fullscreenStoryOverlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      display: none;
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+      overflow-y: auto;
+      padding: 1rem;
+    }
+
+    .fullscreen-story-container {
+      width: 90%;
+      max-width: 1200px;
+      display: flex;
+      gap: 2rem;
+      padding: 2rem;
+      position: relative;
+      margin: auto;
+    }
+
+    .fullscreen-photo {
+      flex: 1;
+      max-width: 60%;
+    }
+
+    .fullscreen-photo img {
+      width: 100%;
+      height: auto;
+      border-radius: 1rem;
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+    }
+
+    .fullscreen-story {
+      flex: 1;
+      color: white;
+      font-size: 1.5rem;
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 1rem;
+      backdrop-filter: blur(10px);
+      line-height: 1.6;
+    }
+
+    .close-story {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      color: white;
+      background: rgba(0, 0, 0, 0.5);
+      border: none;
+      font-size: 2.5rem;
+      cursor: pointer;
+      padding: 0.5rem 1rem;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+      z-index: 10000;
+    }
+
+    .close-story:hover {
+      transform: scale(1.1);
+    }
+
+    .story-navigation {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 1rem;
+      z-index: 10000;
+    }
+
+    .story-nav-button {
+      background: rgba(0, 0, 0, 0.5);
+      border: none;
+      color: white;
+      padding: 0.8rem 1.2rem;
+      border-radius: 2rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 1.2rem;
+    }
+
+    .story-nav-button:hover {
+      background: rgba(0, 0, 0, 0.7);
+      transform: translateY(-2px);
+    }
+
+    /* Mobil cihazlar için düzenlemeler */
+    @media (max-width: 768px) {
+      .fullscreen-story-container {
+        flex-direction: column;
+        padding: 1rem;
+        gap: 1rem;
+        margin-top: 4rem;
+        margin-bottom: 5rem;
+      }
+
+      .fullscreen-photo {
+        max-width: 100%;
+      }
+
+      .fullscreen-story {
+        font-size: 1.5rem;
+        padding: 1rem;
+      }
+
+      .close-story {
+        top: 0.5rem;
+        right: 0.5rem;
+        font-size: 2rem;
+        padding: 0.3rem 0.8rem;
+      }
+
+      .story-navigation {
+        bottom: 1rem;
+      }
+
+      .story-nav-button {
+        padding: 0.6rem 1rem;
+        font-size: 1rem;
+      }
+    }
+
+    /* Küçük mobil cihazlar için ek düzenlemeler */
+    @media (max-width: 480px) {
+      .fullscreen-story-container {
+        width: 95%;
+        margin-top: 3rem;
+      }
+
+      .fullscreen-story {
+        font-size: 1.2rem;
+      }
+
+      .close-story {
+        font-size: 1.8rem;
+        padding: 0.2rem 0.6rem;
+      }
+    }
+
+    /* Kahve ortamı overlay stilleri */
+    #coffeeOverlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      display: none;
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .coffee-environment {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      max-width: 100vw;
+      max-height: 100vh;
+    }
+
+    .close-coffee {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      color: white;
+      background: rgba(0, 0, 0, 0.5);
+      border: none;
+      font-size: 2.5rem;
+      cursor: pointer;
+      padding: 0.5rem 1rem;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+      z-index: 10000;
+    }
+
+    .close-coffee:hover {
+      transform: scale(1.1);
+    }
+
+    /* Mum Animasyonu Stilleri */
+    .candles-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      display: none;
+      z-index: 9999;
+      overflow: hidden;
+    }
+
+    .single-candle-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      display: none;
+      z-index: 9999;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .candle {
+      position: absolute;
+      width: 40px;
+      height: 120px;
+      background: linear-gradient(180deg, #ff9d00, #ffbe44);
+      border-radius: 10px;
+      box-shadow: 0 0 30px rgba(255, 157, 0, 0.4);
+    }
+
+    .single-candle {
+      position: relative;
+      width: 40px;
+      height: 120px;
+      background: linear-gradient(180deg, #ff9d00, #ffbe44);
+      border-radius: 10px;
+      box-shadow: 0 0 30px rgba(255, 157, 0, 0.4);
+    }
+
+    .single-candle.lit {
+      animation: candleLight 2s forwards;
+    }
+
+    @keyframes candleLight {
+      0% {
+        box-shadow: 0 0 30px rgba(255, 157, 0, 0.4);
+      }
+      100% {
+        box-shadow: 0 0 80px rgba(255, 157, 0, 0.8),
+                    0 0 120px rgba(255, 107, 8, 0.6),
+                    0 0 160px rgba(255, 57, 8, 0.4);
+      }
+    }
+
+    .flame {
+      position: absolute;
+      top: -30px;
+      left: 50%;
+      transform: translateX(-50%) scale(0);
+      width: 30px;
+      height: 40px;
+      background: radial-gradient(ellipse at bottom, #ff6b08, transparent 80%);
+      border-radius: 50% 50% 20% 20%;
+      opacity: 0;
+      transition: all 0.5s ease;
+    }
+
+    .flame.lit {
+      transform: translateX(-50%) scale(1);
+      opacity: 1;
+      animation: flicker 1s infinite alternate;
+    }
+
+    @keyframes flicker {
+      0% { transform: translateX(-50%) scale(1); opacity: 0.8; }
+      100% { transform: translateX(-50%) scale(1.1); opacity: 1; }
+    }
+
+    .glow {
+      position: absolute;
+      top: -40px;
+      left: 50%;
+      transform: translateX(-50%) scale(0);
+      width: 60px;
+      height: 60px;
+      background: radial-gradient(circle at center, rgba(255, 107, 8, 0.4), transparent 70%);
+      opacity: 0;
+      transition: all 0.5s ease;
+    }
+
+    .glow.lit {
+      transform: translateX(-50%) scale(1);
+      opacity: 1;
+      animation: glow 2s infinite alternate;
+    }
+
+    @keyframes glow {
+      0% { transform: translateX(-50%) scale(1); opacity: 0.5; }
+      100% { transform: translateX(-50%) scale(1.2); opacity: 0.8; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Kahve ortamı overlay -->
+  <div id="coffeeOverlay">
+    <button class="close-coffee" onclick="closeCoffeeEnvironment()">×</button>
+    <img id="coffeeEnvironmentImg" class="coffee-environment" src="" alt="Kahve Ortamı">
+    <div class="coffee-overlay-content">
+      <h2 id="coffeeTitle" class="coffee-title"></h2>
+      <p id="coffeeDescription" class="coffee-description"></p>
+    </div>
+    <!-- Ses dosyaları -->
+    
+    <audio id="sahilKafeAudio" src="sahil.mp3" loop preload="auto"></audio>
+    <audio id="ormanKafeAudio" src="orman.mp3" loop preload="auto"></audio>
+    <audio id="sehirKafeAudio" src="insansesi.mp3" loop preload="auto" volume="0.0"></audio>
+    <audio id="kitapKafeAudio" src="kitap.mp3" loop preload="auto"></audio>
+    <audio id="dagEviAudio" src="somine.mp3" loop preload="auto"></audio>
+  </div>
+
+  <!-- Kalp overlay -->
+  <div id="heartOverlay">
+    <canvas id="heartCanvas"></canvas>
+  </div>
+
+  <!-- Tam ekran hikaye overlay -->
+  <div id="fullscreenStoryOverlay">
+    <div class="fullscreen-story-container">
+      <button class="close-story" onclick="closeFullscreenStory()">×</button>
+      <div class="fullscreen-photo">
+        <img id="fullscreenImage" src="ozi.jpeg" alt="Hikaye Fotoğrafı">
+      </div>
+      <div class="fullscreen-story" id="fullscreenText">
+        Hikaye yükleniyor...
+      </div>
+      <div class="story-navigation">
+        <button class="story-nav-button" onclick="prevFullscreenStory()">
+          <i data-lucide="arrow-left" class="lucide"></i>
+        </button>
+        <button class="story-nav-button" onclick="nextFullscreenStory()">
+          <i data-lucide="arrow-right" class="lucide"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- Ses dosyaları -->
+    <audio id="sahilAudio" src="sahil.mp3" loop preload="auto"></audio>
+    <audio id="ormanAudio" src="orman.mp3" loop preload="auto"></audio>
+    <audio id="yagmurAudio" src="yagmur.mp3" loop preload="auto"></audio>
+    <audio id="somineAudio" src="somine.mp3" loop preload="auto"></audio>
+
+    <div class="header">
+      <div class="header-icons">
+        <i data-lucide="sun" class="lucide pulse" style="color: #facc15;"></i>
+        <span style="font-size: 2rem; font-weight: bold; background: linear-gradient(to right, #9333ea, #ec4899); -webkit-background-clip: text; color: transparent;">İyi Hisset</span>
+        <i data-lucide="heart" class="lucide pulse" style="color: #ef4444;"></i>
+      </div>
+      <p>Bu sayfa senin yüzünü güldürüp modunu yükseltmek için özel olarak hazırlandı. Kendini iyi hissetmen dileğiyle 💝</p>
+    </div>
+
+    <div class="card photo-card">
+      <h2 style="text-align:center; margin-bottom:1.5rem;">Senin için bu sayfayı hazırlayanlar Oğuzhan Tokgöz ve Simsek Mcqueen</h2>
+      <div class="photo-container">
+        <div class="photo-box" id="storyPhoto">
+          <img src="ozi.jpeg" alt="Hikaye Fotoğrafı" id="storyImage">
+        </div>
+        <div class="story-content" style="flex: 1; padding: 1rem;">
+          <p id="storyText" style="font-size: 1.3rem; color: #5b21b6; margin-bottom: 1rem;">
+            Merhaba! Beni zaten tanıyorsun. Bu sayfayı senin için hazırladım. Umarım beğenirsin! 😊
+          </p>
+          <button class="button" onclick="nextStory()" style="margin-top: 1rem;">
+            <i data-lucide="camera" class="lucide" style="width: 1rem; margin-right: 0.5rem;"></i>
+            Sonraki Hikaye
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 style="text-align:center"><i data-lucide="star" class="lucide" style="color: #facc15;"></i> Günün Mesajı</h2>
+      <div class="quote" id="quote">Gülümsemen, dünyayı değiştirebilir. En azından benimkini değiştirir 😊</div>
+      <div style="text-align: center;">
+        <button class="button" onclick="nextQuote()">
+          <i data-lucide="smile" class="lucide" style="width: 1rem;"></i> Yeni Mesaj
+        </button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 style="text-align:center">Sen...</h2>
+      <p style="text-align:center">Unutma ki sen gerçekten...</p>
+      <div class="badge-container" id="badges">
+        <!-- Rozetler JS ile eklenecek -->
+      </div>
+    </div>
+    <button class="button" onclick="showFlowers()" style="margin: 1rem;">
+      <i data-lucide="flower" class="lucide" style="width: 1rem; margin-right: 0.5rem;"></i>
+      Unutmadan bunlar mcqueen'den senin için
+    </button>
+    
+    <div class="card">
+      <h2 style="text-align:center"><i data-lucide="book" class="lucide" style="color: #6d28d9;"></i> Bugün Kitabını Nerede Okumak İstersin?</h2>
+      <p style="text-align:center">Kendini en iyi hissedeceğin ortamı seç:</p>
+
+      <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem;">
+        <button class="button environment-button" data-environment="sahil">
+          <i data-lucide="waves" class="lucide" style="width: 1rem; margin-right: 0.5rem;"></i> Sahil
+        </button>
+        <button class="button environment-button" data-environment="orman">
+          <i data-lucide="trees" class="lucide" style="width: 1rem; margin-right: 0.5rem;"></i> Orman
+        </button>
+        <button class="button environment-button" data-environment="yagmur">
+          <i data-lucide="cloud-rain" class="lucide" style="width: 1rem; margin-right: 0.5rem;"></i> Yağmur
+        </button>
+        <button class="button environment-button" data-environment="şömine">
+          <i data-lucide="flame" class="lucide" style="width: 1rem; margin-right: 0.5rem; color: #f97316;"></i> Şömine
+        </button>
+        <button class="button environment-button" data-environment="sessiz">
+          <i data-lucide="volume-x" class="lucide" style="width: 1rem; margin-right: 0.5rem;"></i> Sessiz
+        </button>
+      </div>
+    </div>
+    
+    <div class="card">
+      <h2 style="text-align:center"><i data-lucide="coffee" class="lucide" style="color: #6d28d9;"></i> Kahveni Nerede İçmek İstersin?</h2>
+      <p style="text-align:center">Kendini en iyi hissedeceğin ortamı seç:</p>
+
+      <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem;">
+        <div class="card" style="background: linear-gradient(to bottom right, #f0f9ff, #e0f2fe); cursor: pointer;" onclick="showCoffeeEnvironment('sahilKafe')">
+          <h3 style="text-align:center; color: #854d0e;">
+            <i data-lucide="waves" class="lucide"></i> Sahil Kafesi
+          </h3>
+          <p style="text-align:center; font-size: 0.9rem; color: #92400e;">
+            Deniz manzarası eşliğinde, dalga sesleriyle kahve keyfi...
+          </p>
+        </div>
+
+        <div class="card" style="background: linear-gradient(to bottom right, #f7fee7, #ecfccb); cursor: pointer;" onclick="showCoffeeEnvironment('ormanKafe')">
+          <h3 style="text-align:center; color: #854d0e;">
+            <i data-lucide="trees" class="lucide"></i> Orman Kafesi
+          </h3>
+          <p style="text-align:center; font-size: 0.9rem; color: #92400e;">
+            Doğanın kalbinde, yemyeşil manzara eşliğinde kahve keyfi...
+          </p>
+        </div>
+
+        <div class="card" style="background: linear-gradient(to bottom right, #fdf2f8, #fce7f3); cursor: pointer;" onclick="showCoffeeEnvironment('sehirKafe')">
+          <h3 style="text-align:center; color: #854d0e;">
+            <i data-lucide="store" class="lucide"></i> Şehir Kafesi
+          </h3>
+          <p style="text-align:center; font-size: 0.9rem; color: #92400e;">
+            Şehrin kalbinde, vintage bir kafede kahve keyfi...
+          </p>
+        </div>
+
+        <div class="card" style="background: linear-gradient(to bottom right, #fef2f2, #fee2e2); cursor: pointer;" onclick="showCoffeeEnvironment('kitapKafe')">
+          <h3 style="text-align:center; color: #854d0e;">
+            <i data-lucide="library" class="lucide"></i> Kitapçı Kafe
+          </h3>
+          <p style="text-align:center; font-size: 0.9rem; color: #92400e;">
+            Kitapların arasında, huzurlu bir köşede kahve keyfi...
+          </p>
+        </div>
+
+        <div class="card" style="background: linear-gradient(to bottom right, #faf5ff, #f3e8ff); cursor: pointer;" onclick="showCoffeeEnvironment('dagEvi')">
+          <h3 style="text-align:center; color: #854d0e;">
+            <i data-lucide="mountain" class="lucide"></i> Dağ Evi
+          </h3>
+          <p style="text-align:center; font-size: 0.9rem; color: #92400e;">
+            Dağ manzarası eşliğinde, şömine başında kahve keyfi...
+          </p>
+        </div>
+      </div>
+    </div>
+
+    
+
+    <div class="card">
+      <h2 style="text-align:center"><i data-lucide="music" class="lucide" style="color: #ef4444;"></i> Biraz Müzik Dinleyelim</h2>
+      <p style="text-align:center; margin-bottom:1rem;">Müzik dinle rahatla bilmelisin ki her şey geçici 🎵</p>
+      <div class="video-container">
+        <iframe 
+          width="100%" 
+          height="315" 
+          src="https://www.youtube.com/embed/Z8aqzdARZns?si=GplNpDHEMFx4b-qp" 
+          title="YouTube video" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 style="text-align:center"><i data-lucide="youtube" class="lucide" style="color: #ef4444;"></i> Birlikte yürüyüşe çıkalım. Bu sokaklarda yürümenin hayalin olduğunu biliyorum. Belki bir kaç yıl sonra bu sokakları gerçekten dolaşabilirsin</h2>
+      <div class="video-container">
+        <iframe 
+          width="100%" 
+          height="315" 
+          src="https://www.youtube.com/embed/yAwtLDsNGCY" 
+          title="YouTube video" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 style="text-align:center">
+        <i data-lucide="music" class="lucide" style="color: #6d28d9;"></i>
+        Beni dinlemiyorsanda bu bilge ihtiyar adamı dinle
+      </h2>
+      <p style="text-align:center"></p>
+      <div style="text-align: center; margin: 1rem;">
+        <button class="button" onclick="playPeaceMusic()">
+          <i data-lucide="play" class="lucide" style="width: 1rem; margin-right: 0.5rem;"></i>
+          Dinlemeye Başla
+        </button>
+      </div>
+      <audio id="peaceAudio" src="huzur.mp3" preload="auto"></audio>
+    </div>
+
+    <!-- Yeni hikaye kartı -->
+    <div class="card" onclick="showFullscreenStory()" style="cursor: pointer;">
+      <h2 style="text-align:center">
+        <i data-lucide="camera" class="lucide" style="color: #6d28d9;"></i>
+        Bir Sahil Kasabası Mevzusu
+      </h2>
+      <div style="display: flex; align-items: center; gap: 1rem; padding: 1rem;">
+        <img src="sahilkasabasi.jpg" alt="Önizleme" style="width: 150px; height: 150px; object-fit: cover; border-radius: 0.5rem;">
+        <div style="flex: 1;">
+          <p style="font-size: 1.1rem; color: #5b21b6;">
+            Gel birlikte Elifin hayali ve hikayesine bakalım✨
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- Sizin için özel mektup bölümü -->
+    <div class="card mektup-kutusu">
+      <i data-lucide="flower" class="lucide mektup-cicek" width="40" height="40" style="color: #ec4899;"></i>
+      <h2 style="text-align:center; margin-bottom:1.5rem;"><i data-lucide="mail" class="lucide" style="color:#a855f7;"></i> Sana Özel Bir Mektup</h2>
+      <div class="mektup-icerik">
+        Evet, geldim sitenin en zor kısmına...
+
+        Kötü dönemlerden geçtiğini, zor günler yaşadığını öğrendiğimde senin için bir şeyler yapmak istedim. Fiziksel olarak yanında olmak isterdim ama ne yazık ki aramızda mesafeler var. Gerçi bu sadece kilometrelerle ilgili değil; eğer mesele kilometreler olsaydı, bilirsin, aşardım.
+        
+        Bu site, tam da bu yüzden var — kötü bir günü, güzel bir ana çevirebilmek için.
+        Hayat, insanlar, geçmiş, gelecek, kaygılar… Hepsi gelip geçiyor.
+        Ama bilmeni isterim ki, bunların seni nasıl etkilediği çoğu zaman zihninde başlıyor. Zihnimiz, sorunları büyütme konusunda usta. Ancak her şey, onların geçici olduğunu fark etmekle değişmeye başlıyor.
+        
+        Biliyorum, böyle zamanlarda kimseyi görmek istemiyorsun. Belki de her şeyi tek başına çözmek istiyorsun. Ama çok şanslısın çünkü seni önemseyen, seven insanlar var çevrende. Bazen kendin için değil, onlar için de güçlü olabilirsin. Ya da sadece onlara tutunabilir, yardım isteyebilirsin.
+        
+        Ve bilmeni isterim ki…
+        
+        Sarılmaya mı ihtiyacın var?
+        Buradayım.
+        
+        Ağlamaya mı?
+        Buradayım.
+        
+        Konuşmaya mı?
+        Buradayım.
+        
+        Biraz gülmek mi istiyorsun?
+        Yine buradayım.
+        
+        Kendini güvensiz mi hissediyorsun?
+        Her zaman buradayım.
+        
+        Sen yeter ki iste…
+        Yardım etmek için, yanında olmak için, sadece iyi olduğundan emin olmak için buradayım.
+      </div>
+      <div class="mektup-imza">- İyi Hisset</div>
+    </div>
+
+    
+
+    <div class="footer">
+      <button class="button" onclick="showPhoneNumber()" style="margin-top: 1rem;">
+        <i data-lucide="phone" class="lucide" style="width: 1rem; margin-right: 0.5rem;"></i>
+        Her şeye rağmen günün hala çok kötüyse tıkla
+      </button>
+      
+      <p>Unutma: Sen değerlisin ve seviliyorsun! 💕</p>
+      <div style="font-size: 1.5rem;">🌟 💖 🌈 ✨ 🦋</div>
+    </div>
+  </div>
+
+  <script>
+    lucide.createIcons();
+
+    // Kalp ve çiçek çizimi için gerekli değişkenler
+    const heartOverlay = document.getElementById('heartOverlay');
+    const canvas = document.getElementById('heartCanvas');
+    const ctx = canvas.getContext('2d');
+
+    // Canvas boyutlarını ayarla
+    function resizeCanvas() {
+      canvas.width = window.innerWidth * 0.8;
+      canvas.height = window.innerHeight * 0.8;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    function showFlowers() {
+      heartOverlay.style.display = 'block';
+      drawFlowers();
+    }
+
+    // Çiçek buketi çizim fonksiyonu
+    function drawFlowers() {
+      let animationId;
+      let progress = 0;
+      const flowerPositions = [
+        {x: 0, y: -20},      // Orta papatya biraz yukarıda
+        {x: -60, y: -50},    // Sol üst papatya
+        {x: 60, y: -50},     // Sağ üst papatya
+        {x: -45, y: 20},     // Sol alt papatya
+        {x: 45, y: 20}       // Sağ alt papatya
+      ];
+
+      function drawPetal(x, y, rotation, scale, progress) {
+        const petalX = x + Math.cos(rotation) * 25 * scale;  // Yaprak uzaklığını artırdım
+        const petalY = y + Math.sin(rotation) * 25 * scale;  // Yaprak uzaklığını artırdım
+        ctx.beginPath();
+        ctx.ellipse(
+          petalX,
+          petalY,
+          30 * scale * progress,  // Yaprak boyutunu artırdım
+          12 * scale * progress,  // Yaprak genişliğini artırdım
+          rotation,
+          0,
+          2 * Math.PI
+        );
+        ctx.fillStyle = '#FFFFFF';  // Beyaz yapraklar
+        ctx.strokeStyle = '#EEEEEE'; // Hafif gri kenar
+        ctx.fill();
+        ctx.stroke();
+      }
+
+      function drawStem(progress) {
+        // Sap
+        ctx.beginPath();
+        ctx.moveTo(0, 150);  // Sapı uzattım
+        ctx.quadraticCurveTo(
+          -20,
+          50,
+          0,
+          -80 * progress  // Sapın yukarı uzanmasını artırdım
+        );
+        ctx.strokeStyle = '#228B22';
+        ctx.lineWidth = 4;  // Sap kalınlığını artırdım
+        ctx.stroke();
+
+        // Sol yaprak
+        if (progress > 0.3) {
+          ctx.beginPath();
+          ctx.moveTo(-5, 100);  // Yaprak pozisyonunu ayarladım
+          ctx.quadraticCurveTo(-60 * progress, 70, -5, 40);
+          ctx.quadraticCurveTo(-60 * progress, 70, -5, 100);
+          ctx.fillStyle = '#32CD32';
+          ctx.fill();
+        }
+
+        // Sağ yaprak
+        if (progress > 0.5) {
+          ctx.beginPath();
+          ctx.moveTo(5, 80);  // Yaprak pozisyonunu ayarladım
+          ctx.quadraticCurveTo(50 * progress, 50, 5, 20);
+          ctx.quadraticCurveTo(50 * progress, 50, 5, 80);
+          ctx.fillStyle = '#32CD32';
+          ctx.fill();
+        }
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        ctx.save();
+        ctx.translate(canvas.width / 2, canvas.height / 2);
+        ctx.scale(1.5, 1.5);  // Tüm çizimi büyüttüm
+        
+        // Sap çizimi
+        drawStem(Math.min(1, progress * 2));
+
+        // Çiçeklerin çizimi
+        flowerPositions.forEach((pos, i) => {
+          if (progress > i * 0.2) {
+            const flowerProgress = Math.min(1, (progress - i * 0.2) * 2);
+            
+            // Papatya yaprakları (12 yaprak)
+            for (let j = 0; j < 12; j++) {
+              drawPetal(
+                pos.x,
+                pos.y,
+                (j * Math.PI * 2) / 12,
+                1,
+                flowerProgress
+              );
+            }
+
+            // Papatya merkezi (sarı)
+            ctx.beginPath();
+            ctx.arc(pos.x, pos.y, 18 * flowerProgress, 0, Math.PI * 2);  // Merkez boyutunu artırdım
+            ctx.fillStyle = '#FFD700';  // Altın sarısı merkez
+            ctx.fill();
+
+            // Merkezde küçük noktalar
+            if (flowerProgress === 1) {
+              ctx.fillStyle = '#B8860B';  // Koyu sarı noktalar
+              for (let k = 0; k < 12; k++) {  // Nokta sayısını artırdım
+                const angle = (k * Math.PI * 2) / 12;
+                const dotX = pos.x + Math.cos(angle) * 9;  // Nokta pozisyonunu ayarladım
+                const dotY = pos.y + Math.sin(angle) * 9;  // Nokta pozisyonunu ayarladım
+                ctx.beginPath();
+                ctx.arc(dotX, dotY, 3, 0, Math.PI * 2);  // Nokta boyutunu artırdım
+                ctx.fill();
+              }
+            }
+          }
+        });
+
+        ctx.restore();
+
+        if (progress < 1.5) {
+          progress += 0.008;
+          animationId = requestAnimationFrame(animate);
+        }
+      }
+
+      // Animasyonu başlat
+      animate();
+
+      // Overlay kapandığında animasyonu temizle
+      heartOverlay.addEventListener('click', function cleanup() {
+        cancelAnimationFrame(animationId);
+        heartOverlay.removeEventListener('click', cleanup);
+      });
+    }
+
+    // Overlay'i kapatmak için tıklama
+    heartOverlay.addEventListener('click', function() {
+      heartOverlay.style.display = 'none';
+    });
+
+    // Alıntılar
+    const quotes = [
+      "Her yeni gün, yeni bir başlangıçtır. ✨",
+      "Sen harika birisin ve bunu unutma! 💫",
+      "Küçük mutluluklar, büyük değişimler yaratır. 🌸",
+      "Bugün kendine karşı nazik ol. 🤗",
+      "Her zorluk, seni daha güçlü yapar. 💪",
+      "Gülümsemen, dünyayı değiştirebilir. En azından benimkini değiştirir 😊",
+    ];
+    let currentQuote = 0;
+    function nextQuote() {
+      currentQuote = (currentQuote + 1) % quotes.length;
+      document.getElementById("quote").textContent = quotes[currentQuote];
+    }
+
+    // Rozetler
+    const compliments = ["Güçlüsün", "Değerlisin", "Eşsizsin", "İlham vericisin", "Güzelsin", "Akıllısın", "Naziksin", "Özelsin"];
+    const badgesContainer = document.getElementById("badges");
+    compliments.forEach(text => {
+      const span = document.createElement("span");
+      span.className = "badge";
+      span.textContent = text;
+      badgesContainer.appendChild(span);
+    });
+
+    // Ortam sesleri kontrolü
+    const environmentButtons = document.querySelectorAll('.environment-button');
+    let currentAudio = null;
+
+    environmentButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const environment = button.dataset.environment;
+        
+        // Eğer çalan bir ses varsa onu durdur
+        if (currentAudio) {
+          currentAudio.pause();
+          currentAudio.currentTime = 0;
+        }
+
+        // Yeni sesi başlat
+        let audioElement = null;
+        if (environment === 'sahil') {
+          audioElement = document.getElementById('sahilAudio');
+        } else if (environment === 'orman') {
+          audioElement = document.getElementById('ormanAudio');
+        } else if (environment === 'yagmur') {
+          audioElement = document.getElementById('yagmurAudio');
+        } else if (environment === 'şömine') {
+          audioElement = document.getElementById('somineAudio');
+        }
+
+        if (audioElement) {
+          audioElement.play().catch(error => {
+            console.log("Ses çalma hatası:", error);
+          });
+          currentAudio = audioElement;
+        }
+      });
+    });
+
+    // Telefon numarası fonksiyonu
+    function showPhoneNumber() {
+      window.location.href = "tel:+905313611923";
+    }
+
+    // Hikaye sistemi
+    const stories = [
+      {
+        image: "ozi.jpeg",
+        text: "Merhaba! Beni zaten tanıyorsun. Bu sayfayı senin için hazırladım. Umarım beğenirsin! 😊"
+      },
+      {
+        image: "simsek.jpeg",
+        text: "Ve ben Simsek McQueen! Kachow! 🚗 Birlikte harika bir yolculuğa çıkacağız!"
+      },
+      {
+        image: "ozivesimsek.jpeg",
+        text: "Bazen yollar zorlu olabilir, ama unutma ki her virajın sonunda güzel bir manzara vardır! 🌅"
+      }
+    ];
+
+    let currentStoryIndex = 0;
+
+    function nextStory() {
+      currentStoryIndex = (currentStoryIndex + 1) % stories.length;
+      const story = stories[currentStoryIndex];
+      
+      // Fade out efekti
+      const storyPhoto = document.getElementById('storyPhoto');
+      const storyText = document.getElementById('storyText');
+      
+      storyPhoto.style.opacity = '0';
+      storyText.style.opacity = '0';
+      
+      setTimeout(() => {
+        document.getElementById('storyImage').src = story.image;
+        storyText.textContent = story.text;
+        
+        storyPhoto.style.opacity = '1';
+        storyText.style.opacity = '1';
+      }, 300);
+    }
+
+    // Tam ekran hikaye sistemi
+    const fullscreenStories = [
+      {
+        image: "ev.jpg",
+        text: "Sahil kasabası Datça'nın uç kıyısında, begonvillerle sarılmış minik bir ev vardı. Bahçesinde beyaz masa ve sandalyeler, rüzgârda çırpınan ince tüller ve amber kokusu eksik olmazdı. Bu evin sahibi Elif'ti. Otuzlarının başında, içi hâlâ yirmilerindeki kadar coşkulu, ama kalbi birkaç yara almış bir kadındı. Büyükşehirden kaçıp burada, çocukluk hayallerini kurduğu bu sahil kasabasında kendi kafesini açmıştı: Balım Kafesi."
+      },
+      {
+        image: "cift.jpg",
+        text: "Ev, denize bakan bir yamacın üstündeydi. Bir yanında yaşlı bir çift oturuyordu: Münevver Hanım ve Nazmi Bey. Münevver Hanım, bir zamanların ünlü müfettişlerinden, hâlâ keskin gözlem yeteneğine sahipti. Çay içerken bile etrafı tarar, insanların göz hareketlerinden ruh hâllerini çözerdi. Nazmi Bey ise eski bir mühendis, sürekli eski radyoları tamir eder, evin verandasında saatlerce uğraşırdı. İkisi Elif'e bir aile gibi olmuşlardı. Özellikle Münevver Hanım, ona hayatta ikinci bir şansın nasıl değerlendirileceğini sık sık hikâyeleriyle anlatırdı."
+      },
+      {
+        image: "komsu.jpg",
+        text: "Diğer yandaki komşu ise... işler biraz daha karışıktı. Doruk. Elif'in üniversite yıllarındaki eski sevgilisi. Aynı kasabaya taşındığını ilk duyduğunda kahkahalarla gülmüştü, ama birkaç hafta sonra yan kapıda onu görünce donup kalmıştı. Doruk hâlâ aynıydı; heyecanlı, enerjik, biraz da baş belası. Kafeye her sabah gelir, 'Bugünün tatlısı sen misin, yoksa pastan mı?' gibi laf sokmalarla Elif'i çileden çıkarırdı. Ama ne gariptir ki, Elif de sabahları onu bekler olmuştu. Sinirlenmeyi bile özlemişti galiba."
+      },
+      {
+        image: "balimkafe.jpg",
+        text: "Balım Kafesi ise kasabanın gözdesiydi. Ev yapımı reçeller, damla sakızlı kahve, eski taş duvarların gölgesinde kitap okuyan misafirler… Elif'in hayaliydi burası. Bazen yaşlı çiftin hikâyeleri, bazen Doruk'un saçma sapan esprileri, bazen bir çocuğun lavanta bahçesindeki kahkahası derken, bu küçük kafe bir mucizeye dönüşmüştü. Bir gün, Münevver Hanım bir fincan kahvenin yanına küçük bir not bıraktı:  'İkinci baharlar güneşle gelmez, insanın içinde başlar. Seninki başlamış bile, gözlerinde kıvılcımı görüyorum.' Elif, notu okurken gülümsedi. Rüzgâr amber kokusunu getirdi. Doruk, uzaktan yine bir espri patlattı.  Ve Elif düşündü: Belki de hayat, böyle küçük mucizelerle doluydu — bir fincan kahve, bir amber kokusu ve her sabah sinir bozucu bir gülümsemeyle başlayan bir gün..."
+      }
+    ];
+
+    let currentFullscreenIndex = 0;
+
+    function showFullscreenStory() {
+      const overlay = document.getElementById('fullscreenStoryOverlay');
+      overlay.style.display = 'flex';
+      updateFullscreenStory();
+    }
+
+    function closeFullscreenStory() {
+      const overlay = document.getElementById('fullscreenStoryOverlay');
+      overlay.style.display = 'none';
+    }
+
+    function updateFullscreenStory() {
+      const story = fullscreenStories[currentFullscreenIndex];
+      const image = document.getElementById('fullscreenImage');
+      const text = document.getElementById('fullscreenText');
+      
+      // Fade out
+      image.style.opacity = '0';
+      text.style.opacity = '0';
+      
+      setTimeout(() => {
+        image.src = story.image;
+        text.textContent = story.text;
+        
+        // Fade in
+        image.style.opacity = '1';
+        text.style.opacity = '1';
+      }, 300);
+    }
+
+    function nextFullscreenStory() {
+      currentFullscreenIndex = (currentFullscreenIndex + 1) % fullscreenStories.length;
+      updateFullscreenStory();
+    }
+
+    function prevFullscreenStory() {
+      currentFullscreenIndex = (currentFullscreenIndex - 1 + fullscreenStories.length) % fullscreenStories.length;
+      updateFullscreenStory();
+    }
+
+    // Klavye kontrollerini ekle
+    document.addEventListener('keydown', (e) => {
+      if (document.getElementById('fullscreenStoryOverlay').style.display === 'flex') {
+        if (e.key === 'ArrowRight') nextFullscreenStory();
+        if (e.key === 'ArrowLeft') prevFullscreenStory();
+        if (e.key === 'Escape') closeFullscreenStory();
+      }
+    });
+
+    // Kahve ortamları sistemi
+    const coffeeEnvironments = {
+      balkon: {
+        title: "Ev Balkonu",
+        description: "Kuş sesleri ve hafif esinti eşliğinde, balkonda huzurlu bir kahve keyfi...",
+        image: "balkon.jpg",
+        audio: "balkonAudio"
+      },
+      sahilKafe: {
+        title: "Sahil Kafesi",
+        description: "Deniz manzarası ve dalga sesleri eşliğinde, sahilde bir kahve molası...",
+        image: "sahil_kafe.jpg",
+        audio: "sahilKafeAudio"
+      },
+      ormanKafe: {
+        title: "Orman Kafesi",
+        description: "Doğanın kalbinde, yemyeşil manzara ve kuş sesleri eşliğinde kahve keyfi...",
+        image: "orman_kafe.jpg",
+        audio: "ormanKafeAudio"
+      },
+      sehirKafe: {
+        title: "Şehir Kafesi",
+        description: "Şehrin kalbinde, vintage bir kafede, caz müziği eşliğinde kahve molası...",
+        image: "sehir_kafe.jpg",
+        audio: "sehirKafeAudio"
+      },
+      kitapKafe: {
+        title: "Kitapçı Kafe",
+        description: "Kitapların arasında, huzurlu bir köşede, sakin müzik eşliğinde kahve keyfi...",
+        image: "kitap_kafe.jpg",
+        audio: "kitapKafeAudio"
+      },
+      dagEvi: {
+        title: "Dağ Evi",
+        description: "Dağ manzarası eşliğinde, şömine başında sıcacık bir kahve molası...",
+        image: "dag_evi.jpg",
+        audio: "dagEviAudio"
+      }
+    };
+
+    let currentCoffeeAudio = null;
+
+    function showCoffeeEnvironment(environment) {
+      const overlay = document.getElementById('coffeeOverlay');
+      const envData = coffeeEnvironments[environment];
+      
+      // Görsel ayarla
+      document.getElementById('coffeeEnvironmentImg').src = envData.image;
+      
+      // Varsa çalan sesi durdur
+      if (currentCoffeeAudio) {
+        document.getElementById(currentCoffeeAudio).pause();
+        document.getElementById(currentCoffeeAudio).currentTime = 0;
+      }
+      
+      // Yeni sesi başlat
+      const audio = document.getElementById(envData.audio);
+      if (envData.audio === 'sehirKafeAudio') {
+        audio.volume = 0.5;
+      }
+      audio.play();
+      currentCoffeeAudio = envData.audio;
+      
+      // Overlay'i göster
+      overlay.style.display = 'flex';
+    }
+
+    function closeCoffeeEnvironment() {
+      const overlay = document.getElementById('coffeeOverlay');
+      
+      // Sesi durdur
+      if (currentCoffeeAudio) {
+        document.getElementById(currentCoffeeAudio).pause();
+        document.getElementById(currentCoffeeAudio).currentTime = 0;
+      }
+      
+      // Overlay'i kapat
+      overlay.style.display = 'none';
+    }
+
+    // ESC tuşu ile kahve ortamını kapatma
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && document.getElementById('coffeeOverlay').style.display === 'flex') {
+        closeCoffeeEnvironment();
+      }
+    });
+
+    // Mum ve müzik sistemi
+    function createSingleCandle() {
+      const overlay = document.createElement('div');
+      overlay.className = 'single-candle-overlay';
+      document.body.appendChild(overlay);
+      
+      const candle = document.createElement('div');
+      candle.className = 'single-candle';
+      
+      const flame = document.createElement('div');
+      flame.className = 'flame';
+      
+      const glow = document.createElement('div');
+      glow.className = 'glow';
+
+      candle.appendChild(flame);
+      candle.appendChild(glow);
+      overlay.appendChild(candle);
+      
+      overlay.style.display = 'flex';
+      return { overlay, candle, flame, glow };
+    }
+
+    function lightCandle(elements) {
+      elements.candle.classList.add('lit');
+      elements.flame.classList.add('lit');
+      elements.glow.classList.add('lit');
+    }
+
+    function playPeaceMusic() {
+      const audio = document.getElementById('peaceAudio');
+      let candleElements = null;
+      
+      // Ses dosyasını çal ve mumu hemen göster
+      audio.play();
+      candleElements = createSingleCandle();
+      
+      // 11 saniye sonra mumu yak
+      setTimeout(() => {
+        lightCandle(candleElements);
+      }, 11000);
+
+      // Overlay'i kapatmak için tıklama olayı ekle
+      candleElements.overlay.addEventListener('click', () => {
+        candleElements.overlay.style.display = 'none';
+        setTimeout(() => {
+          candleElements.overlay.remove();
+        }, 300);
+      });
+    }
+  </script>
+</body>
+</html>
