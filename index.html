@@ -618,6 +618,103 @@
       0% { transform: translateX(-50%) scale(1); opacity: 0.5; }
       100% { transform: translateX(-50%) scale(1.2); opacity: 0.8; }
     }
+
+    /* Kitap Bölümü Stilleri */
+    .book-container {
+      background: linear-gradient(to right, #fffbeb, #fef3c7);
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .book-page {
+      background: white;
+      padding: 2rem;
+      border-radius: 0.5rem;
+      min-height: 400px;
+      position: relative;
+      box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .book-content {
+      font-family: 'Nunito', sans-serif;
+      font-size: 1.2rem;
+      line-height: 1.8;
+      color: #1f2937;
+    }
+
+    .book-navigation {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 1rem;
+      gap: 1rem;
+    }
+
+    .book-nav-button {
+      background: linear-gradient(to right, #a855f7, #ec4899);
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .book-nav-button:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+    }
+
+    .book-page-number {
+      position: absolute;
+      bottom: 1rem;
+      right: 1rem;
+      font-style: italic;
+      color: #6b7280;
+    }
+
+    .book-title {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #4c1d95;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .book-author {
+      font-size: 1.2rem;
+      color: #6d28d9;
+      text-align: center;
+      margin-bottom: 2rem;
+      font-style: italic;
+    }
+
+    .no-button {
+      background: linear-gradient(to right, #ef4444, #dc2626);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .no-button:hover {
+      cursor: pointer;
+    }
+
+    /* Mobil cihazlar için düzenlemeler */
+    @media (max-width: 768px) {
+      .exercise-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .no-button {
+        width: 80%;
+        max-width: 300px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -804,7 +901,7 @@
         <iframe 
           width="100%" 
           height="315" 
-          src="https://www.youtube.com/embed/i6lXqifn5CU?si=lnWC-6jHTxsIqdTS" 
+          src="https://www.youtube.com/embed/i6lXqifn5CU?si=BcHpcz1xOK_CxiV7" 
           title="YouTube video" 
           frameborder="0" 
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -843,6 +940,36 @@
       <audio id="peaceAudio" src="huzur.mp3" preload="auto"></audio>
     </div>
 
+    <div class="card">
+      <h2 style="text-align:center"><i data-lucide="dumbbell" class="lucide" style="color: #6d28d9;"></i> Bugün Egzersiz Yapmak İster misin?</h2>
+      <p style="text-align:center">Biraz hareket etmek dizine iyi gelebilir! 🏃‍♀️</p>
+      <div class="exercise-buttons" id="exerciseCard" style="display: flex; justify-content: center; gap: 2rem; margin-top: 1.5rem;">
+        <button class="button" onclick="showExerciseVideo()">
+          <i data-lucide="check" class="lucide" style="width: 1rem; margin-right: 0.5rem;"></i>
+          Evet, Hadi Başlayalım!
+        </button>
+        <button class="button no-button" id="noExerciseButton" 
+          onmouseover="moveButton(this)" 
+          ontouchstart="moveButton(this)"
+          ontouchmove="moveButton(this)">
+          <i data-lucide="x" class="lucide" style="width: 1rem; margin-right: 0.5rem;"></i>
+          Hayır, Bugün Olmaz
+        </button>
+      </div>
+      <div id="exerciseVideoContainer" class="video-container" style="display: none; margin-top: 1.5rem;">
+        <iframe 
+          width="100%" 
+          height="315" 
+          src="https://www.youtube.com/embed/CJKsq2guomk?si=YuG0ZtoMmEWC96DQ"
+          title="Egzersiz Video" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+
+    
     <!-- Yeni hikaye kartı -->
     <div class="card" onclick="showFullscreenStory()" style="cursor: pointer;">
       <h2 style="text-align:center">
@@ -854,10 +981,38 @@
         <div style="flex: 1;">
           <p style="font-size: 1.1rem; color: #5b21b6;">
             Gel birlikte Elifin hayali ve hikayesine bakalım✨
+            devamı aşağıda
           </p>
         </div>
       </div>
     </div>
+    
+    <!-- Kitap Bölümü -->
+    <div class="card book-container">
+      <h2 style="text-align:center">
+        <i data-lucide="book-open" class="lucide" style="color: #6d28d9;"></i>
+        Bir Sahil Kasabası
+      </h2>
+      <div class="book-page">
+        <h3 id="bookTitle" class="book-title">Bölüm 1 – Sahil ve Sessizlik</h3>
+        
+        <div id="bookContent" class="book-content">
+          Datça’nın en uç noktasında, rüzgârın denizle fısıldaştığı bir yamacın üstünde, begonvillerin sarıp sarmaladığı minik bir ev vardı. Kireç beyazı duvarları, sabah güneşiyle parıldar; akşam üzeri gölgeler, tül gibi düşerdi verandasına. Bahçede her zaman açık duran yuvarlak beyaz masa, rüzgârla hafifçe savrulan ince tüller ve toprağa karışmış amber kokusu… Hepsi bir bütün gibiydi; bu ev yaşayan bir masalın içindeydi sanki. Ve o masalın kahramanı, Elif’ti.
+        </div>
+        <div class="book-page-number" id="bookPageNumber">Sayfa 1/10</div>
+      </div>
+      <div class="book-navigation">
+        <button id="prevBookPage" class="book-nav-button" onclick="prevBookPage()" disabled>
+          <i data-lucide="arrow-left" class="lucide"></i>
+          Önceki Sayfa
+        </button>
+        <button id="nextBookPage" class="book-nav-button" onclick="nextBookPage()">
+          Sonraki Sayfa
+          <i data-lucide="arrow-right" class="lucide"></i>
+        </button>
+      </div>
+    </div>
+
     <!-- Sizin için özel mektup bölümü -->
     <div class="card mektup-kutusu">
       <i data-lucide="flower" class="lucide mektup-cicek" width="40" height="40" style="color: #ec4899;"></i>
@@ -1376,6 +1531,161 @@
           candleElements.overlay.remove();
         }, 300);
       });
+    }
+
+    // Kitap sayfaları
+    const bookPages = [
+      {
+        title: "Bölüm 1 – Sahil ve Sessizlik",
+        content: "Datça’nın en uç noktasında, rüzgârın denizle fısıldaştığı bir yamacın üstünde, begonvillerin sarıp sarmaladığı minik bir ev vardı. Kireç beyazı duvarları, sabah güneşiyle parıldar; akşam üzeri gölgeler, tül gibi düşerdi verandasına. Bahçede her zaman açık duran yuvarlak beyaz masa, rüzgârla hafifçe savrulan ince tüller ve toprağa karışmış amber kokusu… Hepsi bir bütün gibiydi; bu ev yaşayan bir masalın içindeydi sanki. Ve o masalın kahramanı, Elif’ti."
+      },
+      {
+        title: "Sahil ve Sessizlik",
+        content: "Otuzlarının başında ama ruhu hâlâ yirmilerinde bir genç kız gibi kıpır kıpırdı Elif’in. Kalbi ise zamanla çizilmiş birkaç ince kırıkla suskun. Hayatı boyunca fazla gürültüyle yaşamamıştı zaten. Sessizlik onunla dosttu; düşünceleri, kelimelere tercih etmişti hep. Yıllar boyunca büyükşehirde okumuş, çalışmış, çabalamış ama sonunda kalabalığın içinde kaybolmaktan yorulmuştu. Bu yüzden bir gün, sabah kahvesini içerken hiçbir şey demeden karar verdi: Gidecekti. Yıllarca zihninde kurduğu o kasabaya taşınacak, hayalini kurduğu kafe için yeni bir sayfa açacaktı. Ve açtı da: Balım Kafesi."     
+       },
+      {
+        title: "Sahil ve Sessizlik",
+        content: "Kafenin adı bile huzurluydu. İçinde çocukluk vardı, yazlar vardı, özlenen bir şey vardı. Ev yapımı reçellerin kokusu her sabah sokağa taşar, damla sakızlı kahve fincanları, yılların izini taşıyan taş duvarların serinliğinde servis edilirdi. Gelen müşteriler önce kafenin sakinliğine, sonra Elif’in sessiz zarafetine tutulurdu. Oysa Elif, bazen müşteri kalabalığının ortasında bile kendi içinde bir köşede durur, geçmişin gölgelerini izlerdi. Evine gelirsek, denize bakan bir tepede, iki yanına komşular serpiştirilmişti. Bir tarafında yaşlı bir çift otururdu: Münevver Hanım ve Nazmi Bey. Onlar bu kasabanın yaşayan belleğiydi. Münevver Hanım, yıllar önce devletin önemli kadrolarında görev almış bir müfettişti. Şimdi her sabah kahvesini yudumlarken gözlem yapmayı sürdürüyordu; insanları bir bakışta çözer, en çok da suskun olanlara dikkat ederdi. Elif’i ilk gördüğü günden beri severdi. Ona sık sık 'Hayatta ikinci bahar, gökten düşmez; kalbinin derininden filizlenir' derdi. Hikâyeleri, öğütleri ve bazen sadece bir bakışıyla bile Elif’e güç verirdi."
+      },
+      {
+        title: "Sahil ve Sessizlik",
+        content: "Nazmi Bey ise sessizliğin adamıydı. Emekli bir mühendis, antika radyoları tamir etmeyi bir tutkuya dönüştürmüş, verandasında saatlerce uğraşırdı. Radyo sesleriyle karışan alet sesleri, Elif’in evine kadar ulaşır, onu geçmişin sesleriyle sarar sarmalardı. Elif için bu ikili, ailesinden uzakta bulduğu bir çeşit koruyucuydu. Ama diğer taraftaki komşu… işler orada daha karmaşıktı. Doruk. Elif’in üniversiteden eski sevgilisi. Doruk’un kasabaya taşındığını ilk Duygu’dan duymuştu. Duyduğunda kahkahayı patlatmıştı: “Yok artık!” demişti. Ama birkaç hafta sonra yan kapının açıldığını ve eşiği geçen tanıdık bir silueti gördüğünde, içi buz kesmişti. Doruk hâlâ aynı gibiydi. Özgüvenli, enerjik, biraz huysuz ama içten içe çok tanıdık… Belki biraz daha olgun, ama yine o gülümsemeyle. Elif’i hem sinirlendirip hem de kahkaha attıran o eski gülümsemeyle çıkagelmişti."
+      },
+      {
+        title: "Sahil ve Sessizlik",
+        content: "Kafeye her sabah gelir olmuştu. 'Bugünün tatlısı sen misin, yoksa pastan mı?, gibi iğneleyici ama içinde bir şey gizleyen cümlelerle Elif’i kızdırırdı. Elif cevap vermemeye çalışırdı ama bazen istemsizce gülümserdi. Bunu fark ettiğinde ise hemen ciddi bir ifadeyle toparlardı kendini. Sinirlenmek bile bir alışkanlığa dönüşmüştü. Ve en kötüsü, Elif artık sabahları Doruk’un gelip gelmeyeceğini düşünür olmuştu. Kafeye lavanta kokusu sinmişti. Bazen bir çocuk kahkahası, bazen yaşlı çiftin anlattığı eski bir anı, bazen Doruk’un anlamsız ama garip biçimde sıcak gelen esprileri… Hepsi Balım Kafesi’nin duvarlarına sinmişti. Elif ne zaman boş kalıp bir köşeye çekilse, hayatın ince ince işlediği bu detayları izlerdi. Bir sabah, Münevver Hanım bir kahve bırakırken yanında küçük bir not iliştirmişti: 'İkinci baharlar güneşle gelmez, insanın içinde başlar. Seninki başlamış bile. Gözlerinde kıvılcımı görüyorum.'"
+      },
+      {
+        title: "Sahil ve Sessizlik",
+        content: "Elif o notu okurken içinden bir şey yumuşamıştı. Dudaklarının kenarında belli belirsiz bir tebessüm belirdi. Rüzgâr o anda amber kokusunu yeniden taşıdı içeriye. Kapı önünde Doruk’un sesi yankılandı: “Bugün benim hatırıma normal kahve yap, sakızlısı kalbimi kırıyor!” Elif kafasını hafifçe eğdi, iç çekti. Aynı anda gülümsedi ve düşündü: Belki de hayat, büyük değişimlerle değil… Bir fincan kahve, bir amber kokusu ve her sabah sinir bozucu bir gülümsemeyle başlıyordur. Elif, Datça’daki o küçük evde rüzgârla savrulan tülleri izlerken, geçmişin kapısını her sabah biraz daha aralıyordu. Doruk’un adını ilk duyduğu anla başlayan o kırık hikâye, şimdi yeniden gözlerinde beliriyordu. Ama her şeyin bir başlangıcı vardı. O ilk bakış, ilk kıvılcım... Gelin o her şeyin başladığı yere dönelim."
+      },
+      {
+        title: "Bölüm 2 – İlk Bakış",
+        content: "Doruk o akşam evden çıkarken aynada yüzüne son bir kez baktı. Saçları her zamanki gibi dağınık, kaşlarının arasındaki çizgi ise biraz daha derin görünüyordu. Günlerdir kafasında dolanan şeyleri susturmak için müzik bile fayda etmemişti. Ama Duygu ısrarla mesajlar atınca, “sosyal hayat” adına kendini sokağa atmıştı. Duygu’nun evi her zaman biraz dağınık ama sıcaktı. Mum ışığı, kitap kuleleri, müzikten çok melodiydi içerideki sesler. Duygu, enerjisi asla bitmeyen, konuşurken ellerini havada gezdiren, biraz da dedikoducu bir insandı. Bu akşamki küçük yemek davetinde, “kendi dünyasını kurmuş” dediği birkaç farklı arkadaşı da vardı. İçeri girdiğinde önce burnuna zeytinyağlı sarma ve tarçınlı kurabiye kokusu çarptı. Sonra hafif bir kahkaha uğultusu. Gözleri kalabalığı tararken önce kimseyi seçemedi. Ama sonra, salonun köşesinde küçük bir koltukta oturan kızı gördü, Elif."
+      },
+      {
+        title: "İlk Bakış",
+        content: "Mavi üstü, beyaz pantolonu, omzunda biten saçları ve gözlerinin ardındaki yaralı küçük kız hemen dikkatini çekmişti Doruk’un. Elinde bir çay bardağı, başını hafif yana eğmiş, karşısındaki biriyle konuşuyordu. Konuşmak demek belki fazla olurdu; daha çok dinliyor gibiydi. Duruşunda bir denge, bakışlarında sakin ama yoğun bir ifade vardı. Öylece oturuyordu, sanki odayla arasında görünmez bir perde vardı ama herkes ondan haberdardı. Doruk bir an durdu. Ayakları ilerlemeyi unuttu. Kalbinin ortasında tanımsız bir kıpırtı vardı. 'Saçma,' dedi içinden. 'Saçmalama.' Ama işte, oluyordu. Karnında başlayan bu his neydi? Kelebekler gerçek olabilir miydi? Kafasının içinde yıllardır susan bir yer, fısıldamaya başlamıştı. Elif’in o sade hâli, süssüzlüğü, gülerken gözlerinin kısılışı, gözlerini saklarken aslında çok şey söylemesi… içini burkan bir güzellikti. Bir şeyler oluyordu ve Doruk bunu hem anlamıyor hem de kaçırmak istemiyordu."
+      },
+      {
+        title: "İlk Bakış",
+        content: "Yanına sokulup “Kim o?” diye sordu Duygu’ya. Duygu tebessüm etti. “Elif. İngilizce kursundan tanıştık. İnanılmaz tatlı biridir, içine kapanık gibi görünür ama çok zeki. Bu arada bizim okulda zaten, Kamu Yönetimi okuyordu, şimdi üçüncü sınıfta.” Doruk’un gözleri tekrar Elif’e döndü. Aynı üniversitede olduklarına şaşırmıştı. Bu kadar zamandır nasıl fark etmediğini düşündü. Belki de doğru an şimdi gelmişti. Belki de bazı bakışmalar, geç kalmış zamanların işaretiydi. “Tanışabilir miyim?” dedi, sesinde hafif bir heyecan. Ama Duygu’nun yüz ifadesi değişti. Bir saniyelik duraksama. Sonra hafifçe eğilip fısıldadı: “Elbette... ama şey… Taylan da birazdan gelir. Elif’in sevgilisi. Uzun zamandır birlikteler.” O an Doruk’un içinde bir şey söndü. Az önce parlamaya başlayan o ışık, ani bir rüzgârla titredi. Ama yine de gözlerini kaçırmadı Elif’ten. Belki bakması yasak, belki hayal kurması erken, ama içinden geçenleri durdurmak zordu."
+      },
+      {
+        title: "İlk Bakış",
+        content: "Sofrada karşılıklı oturmadılar. Birkaç kelimeyle geçiştirilen tanışma. Memnun oldumlar. Elif’in içten ama mesafeli tebessümü. Taylan’ın gelmesiyle o ışığın biraz daha uzaklaşması… Doruk, bir köşede kahvesini karıştırırken göz ucuyla Elif’in sohbetini izledi. Elif fazla konuşmuyordu ama dinlerken gözleriyle anlatıyordu sanki. Kimi zaman gülümsüyor, kimi zaman göz kapaklarını hafifçe indiriyordu. Ve her seferinde Doruk’un içine işleyen o dinginlik... “Hayat, bazı insanlarla geç karşılaşır” dedi içinden. “Ve bazılarına yalnızca bakmakla yetinirsin.” Ama Doruk henüz bilmiyordu: Bu karşılaşma, bir bakışla başlayan ama yıllara yayılacak bir hikâyenin ilk satırıydı. Doruk, Elif’i ilk gördüğü gün kalbine saplanan sızıyla tanışmıştı. O bakış, o gülüş, o ulaşılmazlık... Ama kader, yolları sadece kesiştirmez, onları sınar da. Zaman geçti, insanlar değişti. Ve bir gün, hayat yollarını kesiştirecekti."
+      },
+     
+    ];
+
+    let currentBookPage = 0;
+
+    function updateBookPage() {
+      const page = bookPages[currentBookPage];
+      document.getElementById('bookTitle').textContent = page.title;
+      document.getElementById('bookContent').textContent = page.content;
+      document.getElementById('bookPageNumber').textContent = `Sayfa ${currentBookPage + 1}/${bookPages.length}`;
+      
+      // Navigasyon butonlarını güncelle
+      document.getElementById('prevBookPage').disabled = currentBookPage === 0;
+      document.getElementById('nextBookPage').disabled = currentBookPage === bookPages.length - 1;
+    }
+
+    function nextBookPage() {
+      if (currentBookPage < bookPages.length - 1) {
+        currentBookPage++;
+        updateBookPage();
+      }
+    }
+
+    function prevBookPage() {
+      if (currentBookPage > 0) {
+        currentBookPage--;
+        updateBookPage();
+      }
+    }
+
+    // Egzersiz video kontrolü
+    function showExerciseVideo() {
+      const videoContainer = document.getElementById('exerciseVideoContainer');
+      videoContainer.style.display = 'block';
+      // Videoya scroll
+      videoContainer.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Intersection Observer oluştur
+    const exerciseCardObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) {
+          // Card görünür değilse butonu sıfırla
+          resetButtonPosition();
+        }
+      });
+    }, {
+      // Eşik değeri: card'ın %20'si görünür olmadığında tetiklenecek
+      threshold: 0.2
+    });
+
+    // Sayfa yüklendiğinde observer'ı başlat
+    document.addEventListener('DOMContentLoaded', () => {
+      const exerciseCard = document.getElementById('exerciseCard');
+      if (exerciseCard) {
+        exerciseCardObserver.observe(exerciseCard);
+      }
+    });
+
+    function resetButtonPosition() {
+      const button = document.getElementById('noExerciseButton');
+      if (button) {
+        button.style.position = 'relative';
+        button.style.left = 'auto';
+        button.style.top = 'auto';
+        button.style.transform = 'none';
+      }
+    }
+
+    // Hayır butonunu kaçırma
+    function moveButton(button) {
+      // Ekran boyutlarını al
+      const screenWidth = window.innerWidth;
+      const screenHeight = window.innerHeight;
+      const buttonWidth = button.offsetWidth;
+      const buttonHeight = button.offsetHeight;
+
+      // Mobil cihaz kontrolü
+      const isMobile = window.innerWidth <= 768;
+
+      // Card'ın görünürlüğünü kontrol et
+      const exerciseCard = document.getElementById('exerciseCard');
+      const cardRect = exerciseCard.getBoundingClientRect();
+      
+      // Eğer card görünür değilse butonu hareket ettirme
+      if (cardRect.bottom < 0 || cardRect.top > window.innerHeight) {
+        resetButtonPosition();
+        return;
+      }
+
+      // Mobil cihazlar için sınırları ayarla
+      const maxX = isMobile ? (screenWidth - buttonWidth - 20) : (screenWidth - buttonWidth);
+      const maxY = isMobile ? (screenHeight - buttonHeight - 60) : (screenHeight - buttonHeight);
+      
+      // Minimum mesafeler
+      const minX = isMobile ? 20 : 0;
+      const minY = isMobile ? 60 : 0;
+
+      // Rastgele pozisyon hesapla
+      const randomX = Math.floor(Math.random() * (maxX - minX)) + minX;
+      const randomY = Math.floor(Math.random() * (maxY - minY)) + minY;
+      
+      // Butonu yeni pozisyona taşı
+      button.style.position = 'fixed';
+      button.style.left = randomX + 'px';
+      button.style.top = randomY + 'px';
+      
+      // Mobil cihazlarda scroll'u engelle
+      if (isMobile && event) {
+        event.preventDefault();
+      }
     }
   </script>
 </body>
