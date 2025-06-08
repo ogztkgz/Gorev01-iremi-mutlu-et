@@ -198,8 +198,6 @@
     .music-container {
       margin: 1rem 0;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      border-radius: 1rem;
-      overflow: hidden;
     }
     .night {
       position: fixed;
@@ -715,6 +713,52 @@
         max-width: 300px;
       }
     }
+
+    /* Şiir Bölümü Stilleri */
+    .siir-bolumu {
+      background: linear-gradient(to bottom right, #fff5f7, #faf5ff);
+      border-radius: 1.5rem;
+      padding: 2.5rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      position: relative;
+      margin: 2rem 0;
+    }
+    .siir-baslik {
+      font-family: 'Caveat', cursive;
+      font-size: 2rem;
+      color: #6b21a8;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    .siir-metin {
+      font-family: 'Nunito', sans-serif;
+      font-size: 1.2rem;
+      line-height: 2;
+      color: #4c1d95;
+      text-align: center;
+      white-space: pre-line;
+      margin: 0;
+    }
+    .siir-yazar {
+      font-family: 'Caveat', cursive;
+      font-size: 1.4rem;
+      color: #be185d;
+      text-align: right;
+      margin-top: 1.5rem;
+    }
+    .siir-dekor {
+      position: absolute;
+      font-size: 1.5rem;
+      opacity: 0.2;
+    }
+    .siir-dekor-sol {
+      top: 1rem;
+      left: 1rem;
+    }
+    .siir-dekor-sag {
+      bottom: 1rem;
+      right: 1rem;
+    }
   </style>
 </head>
 <body>
@@ -969,6 +1013,36 @@
       </div>
     </div>
 
+    <div class="container">
+      <div class="siir-bolumu">
+        <div class="siir-dekor siir-dekor-sol">❀</div>
+        <h2 class="siir-baslik">Hoş Geldin Kadınım</h2>
+        <p class="siir-metin">
+          Hoş geldin kadınım benim, hoş geldin.
+          Yorulmuşsundur;
+          nasıl etsem de yıkasam ayacıklarını,
+          ne gül suyum, ne gümüş leğenim var.
+          Susamışsındır;
+          buzlu şerbetim yok ki ikram edeyim.
+          Acıkmışsındır;
+          sana beyaz keten örtülü sofralar kuramam
+          memleket gibi esir ve yoksuldur odam.
+          
+          Hoş geldin kadınım benim, hoş geldin!
+          Ayağını bastın odama
+          kırk yıllık beton, çayır çimen şimdi.
+          Güldün,
+          güller açıldı penceremin demirlerinde.
+          Ağladın,
+          avuçlarıma döküldü inciler;
+          gönlüm gibi zengin,
+          hürriyet gibi aydınlık oldu odam.
+          Hoş geldin kadınım benim, hoş geldin…
+        </p>
+        <div class="siir-yazar">- Nazım Hikmet</div>
+        <div class="siir-dekor siir-dekor-sag">❀</div>
+      </div>
+    </div>
     
     <!-- Yeni hikaye kartı -->
     <div class="card" onclick="showFullscreenStory()" style="cursor: pointer;">
@@ -997,9 +1071,9 @@
         <h3 id="bookTitle" class="book-title">Bölüm 1 – Sahil ve Sessizlik</h3>
         
         <div id="bookContent" class="book-content">
-          Datça’nın en uç noktasında, rüzgârın denizle fısıldaştığı bir yamacın üstünde, begonvillerin sarıp sarmaladığı minik bir ev vardı. Kireç beyazı duvarları, sabah güneşiyle parıldar; akşam üzeri gölgeler, tül gibi düşerdi verandasına. Bahçede her zaman açık duran yuvarlak beyaz masa, rüzgârla hafifçe savrulan ince tüller ve toprağa karışmış amber kokusu… Hepsi bir bütün gibiydi; bu ev yaşayan bir masalın içindeydi sanki. Ve o masalın kahramanı, Elif’ti.
+          Datça'nın en uç noktasında, rüzgârın denizle fısıldaştığı bir yamacın üstünde, begonvillerin sarıp sarmaladığı minik bir ev vardı. Kireç beyazı duvarları, sabah güneşiyle parıldar; akşam üzeri gölgeler, tül gibi düşerdi verandasına. Bahçede her zaman açık duran yuvarlak beyaz masa, rüzgârla hafifçe savrulan ince tüller ve toprağa karışmış amber kokusu… Hepsi bir bütün gibiydi; bu ev yaşayan bir masalın içindeydi sanki. Ve o masalın kahramanı, Elif'ti.
         </div>
-        <div class="book-page-number" id="bookPageNumber">Sayfa 1/10</div>
+        <div class="book-page-number" id="bookPageNumber">Sayfa 1/21</div>
       </div>
       <div class="book-navigation">
         <button id="prevBookPage" class="book-nav-button" onclick="prevBookPage()" disabled>
@@ -1062,6 +1136,8 @@
       <p>Unutma: Sen değerlisin ve seviliyorsun! 💕</p>
       <div style="font-size: 1.5rem;">🌟 💖 🌈 ✨ 🦋</div>
     </div>
+
+    
   </div>
 
   <script>
@@ -1577,7 +1653,51 @@
         title: "İlk Bakış",
         content: "Sofrada karşılıklı oturmadılar. Birkaç kelimeyle geçiştirilen tanışma. Memnun oldumlar. Elif’in içten ama mesafeli tebessümü. Taylan’ın gelmesiyle o ışığın biraz daha uzaklaşması… Doruk, bir köşede kahvesini karıştırırken göz ucuyla Elif’in sohbetini izledi. Elif fazla konuşmuyordu ama dinlerken gözleriyle anlatıyordu sanki. Kimi zaman gülümsüyor, kimi zaman göz kapaklarını hafifçe indiriyordu. Ve her seferinde Doruk’un içine işleyen o dinginlik... “Hayat, bazı insanlarla geç karşılaşır” dedi içinden. “Ve bazılarına yalnızca bakmakla yetinirsin.” Ama Doruk henüz bilmiyordu: Bu karşılaşma, bir bakışla başlayan ama yıllara yayılacak bir hikâyenin ilk satırıydı. Doruk, Elif’i ilk gördüğü gün kalbine saplanan sızıyla tanışmıştı. O bakış, o gülüş, o ulaşılmazlık... Ama kader, yolları sadece kesiştirmez, onları sınar da. Zaman geçti, insanlar değişti. Ve bir gün, hayat yollarını kesiştirecekti."
       },
-     
+      {
+        title: "Bölüm 3 – Bir Mesajla Başlayan",
+        content: "Elif için yaz, bir vedayla başlamıştı. Üniversite yıllarının sonu gelmiş, dört yıllık yolculuk bir törende son bulmuştu. Kepi havaya fırlattığı o anı hatırlarken gülümsemiyordu—çünkü o gün, sadece okulunu değil, arkadaşlarını, hatıralarını ve umutlarını da geride bırakmıştı. İstanbul’a döndüğünde, evinin balkonunda sabah kahvesini içerken yalnızlığını kucaklamaya karar vermişti. Kalabalıktan uzak duracak, kendine vakit ayıracak, içindeki gürültüyü bir süreliğine susturacaktı. Bu düşünceyle, babasının “Birlikte küçük bir kaçamak yapalım mı?” teklifi ilaç gibi geldi. Kız kardeşi Beren de heyecanla atlamıştı fikre. Üçü birlikte İzmir’e gitmeye karar verdiler. İzmir, Elif’in hiç uğramadığı ama içini ısıtan şehirlerden biriydi. Sakinliği, denize açılan sokakları, martıların bile İstanbul’dakilere kıyasla daha huzurlu ötüşü… Şehir başka bir ritimde yaşıyordu. Alsancak’ta küçük bir otelde kaldılar. Giriş katı taş duvarlarla çevriliydi, üst kattaki odalarında balkondan palmiye ağaçları görünüyordu. Babası kahvaltılarda zeytinlerin iyiliğinden bahsediyor, Beren her sokak lambasının altında poz vermek istiyordu. Elif ise gözlemliyordu sadece. Hayatı, insanları, içini."
+      },
+      {
+        title: "Bir Mesajla Başlayan",
+        content: "İlk akşam valizini yerleştirirken, telefonuna bir mesaj düştü. Doruk. İsmini ekranda gördüğünde yüzünde beliren tebessüm, istemsizdi. Parmaklarıyla hemen kilidi açtı. Doruk: 'Şirince Efes rotası gezmek için çok iyi beğendiniz mi ?' Cümle, hafifti. Ama içinde taşıdığı şey fazlaydı. Duygu yüklü olmayan, ölçülü ama içten bir başlangıç gibi. Doruk… Elif’in geçmişinde kısa bir başlıktı aslında. Duygu sayesinde tanışmışlardı, ortak bir akşam yemeğinde. Elif o gece fazla konuşmamıştı ama Doruk onun sessizliğine dikkat kesilmişti. Sanki kalabalık bir odada yalnızca onun suskunluğunu duymuştu. O yemekten sonra bir daha karşılaşmamışlardı. Ama belli ki Doruk, o geceden sonra Elif’i unutmamıştı. Elif telefonu eline aldı, bir süre yazıp yazıp sildi. Sonra sade ama heyecanlı bir cevapla döndü: Elif: 'Gerçekten çok beğendimmm ama kuş adasınada gitmeyi çok isterdimm' Cevap geldikten sonra uzun süre başka bir mesaj gelmedi. Elif denize karşı oturmuştu, Beren dondurma seçmeye çalışıyor, babası fotoğraf çekiyordu. Güneş yavaşça denizin içine batarken, Elif’in içinde garip bir kıpırtı vardı. Duygusal bir yakınlık değildi bu; daha çok bir tanıdıklık, bir ihtimalin kendini göstermesi gibi. Gece oldu. Otel odasında Beren çoktan uyumuş, babası kitap okuyordu. Elif telefonuna bir kez daha baktı. Ekranda yeni bir mesaj vardı. Doruk: 'Bir gün kahve içelim seninle. Sadece merhaba demek için. Belki biraz sessizliğini paylaşırım.'"
+      },
+      {
+        title: "Bir Mesajla Başlayan",
+        content: "Elif uzun süre mesajı okudu. Yorgundu. Sade bir yorgunluk değildi bu; duygulardan, beklentilerden, geçmişin yükünden oluşan bir ağırlıktı. Ama Doruk’un kelimeleri bu ağırlığı sırtından almak istemiş gibiydi. Zorlamadan, acele etmeden, sadece paylaşmak isteyerek. Cevap yazmadı. Ama sabaha karşı, deniz kenarında yürürken zihninde o cümle yankılanıyordu: 'Belki biraz sessizliğini paylaşırım.' O anda Elif şunu fark etti:  Bazen, bir şeylerin başlaması için büyük adımlara gerek yoktu.  Bazen bir mesaj, yıllar sonra duyulan bir ses, ya da sadece bir “merhaba”…  Bir yolun başı olabilirdi. İzmir’in sıcak yaz güneşinin altında başlayan o mesajlaşma, şehirler arası uzun bir yolculuğun habercisiydi.  Ne Elif hazırdı bir şeye, ne Doruk cesurdu.  Ama kelimeler, cesareti zamanla inşa eder.  Ve onlar, kelimelerle yeniden bir bağ örmeye başlamışlardı… İzmir’den İstanbul’a dönüş, Elif için kısa ama derin bir yolculuktu. Arabada camdan dışarı bakarken, rüzgâr saçlarını dağıtırken düşündüğü tek şey şuydu: Neden bir insan, sadece birkaç mesajla bir başkasının aklına bu kadar yerleşir?"
+      },
+      {
+        title: "Bir Mesajla Başlayan",
+        content: "Doruk, o tatilden sonra bir daha aramamıştı. Ama mesaj atmayı hiç bırakmamıştı. Ne sık, ne de seyrek. Sanki zamanın ritmini ayarlayan görünmez bir metronom gibiydi. Sessizliğin uzamasına izin vermeyen ama gürültüye de yer bırakmayan bir iletişim… İlk günlerde konuşmalar yüzeyseldi. Kitap önerileri, kahve çeşitleri, gündelik dertler...  Ama günler geçtikçe, sözcükler derinleşti. Bir gün Elif, gecenin bir yarısında 'Bugün her şey biraz fazla geldi.' diye mesaj attığında, Doruk 'Bazen hayat çuval gibi omzuna düşer. İstersen birlikte taşıyabiliriz.' diye yazdı.  Basit bir cevap değildi bu. Ne teselli etmeye çalışıyordu, ne de çözüm sunuyordu. Sadece yanındayım diyordu. Sessiz, ağır ama yerinde. Elif bir süre sonra fark etti ki, Doruk’a gününü anlatmak ister olmuştu. Gülümseten bir sahne, canını sıkan bir an, gökyüzünün rengi, okuduğu bir cümle… Paylaşmak istiyordu. Çünkü Doruk dinliyordu. Doruk da kendi dünyasını yavaş yavaş açmaya başlamıştı. Çocukluğundan bahsediyordu bazen, annesinin yaptığı tarçınlı kurabiyeleri hâlâ özlediğinden…  Kimi zaman üniversite yıllarında yaptığı hataları anlatıyor, 'O zamanlar dünyayı kurtaracak sandım kendimi, meğer önce kendi enkazımı toplamam gerekiyormuş.' diyordu. Ve bu satırların içinde, hiçbir zaman açıkça söylenmeyen ama orada, tam da satır aralarında duran bir şey vardı:  Yakınlık."
+      },
+      {
+        title: "Bir Mesajla Başlayan",
+        content: "Ne Elif ilk adımı atıyordu, ne Doruk. Ama her mesaj, aralarındaki mesafeyi bir adım daha kısaltıyordu.  İstanbul ve İzmir artık sadece iki şehir değil, bir duygu hattının iki ucu olmuştu.  Sabah mesajları, gece vedaları, gün içinde 'Bunu görünce aklıma sen geldin' cümleleri…  Tüm bu parçalar, usulca bir şeyin temelini örüyordu. Bir akşam, Elif bir kahve dükkânında yalnız otururken, telefonuna mesaj geldi. Doruk: 'Bugün rüyamda seni gördüm. Gülüyordun. Sahi, sen yüksek sesle güler misin?' Elif bir an durdu. Ekrana baktı. Gülümsedi. Sonra cevap yazdı: Elif: 'Sen duyarsan gülerim belki.' Gönder tuşuna bastığında, içi kıpırdadı. Bu, başka bir şeydi.  Bu, artık sadece yazışmak değildi.  Bu, yaklaşmaktı.  Yavaş, sessiz, ama güçlü bir çekim gibi. Günler geçti. Mesajlar, seslere dönüştü. Sesler, hayallere. Ve bir sabah, İstanbul’da bir sokak başında, Doruk elinde çiçeklerle bekliyordu. O anın bir öncesi, bir de sonrası vardı. Hiçbiri eskisi gibi olmayacaktı."
+      },
+      {
+        title: "Bölüm 4 - O An",
+        content: "İstanbul...  O kalabalığın, karmaşanın, zamanın hızla aktığı şehir. Ama o gün, Doruk için her şey durmuş gibiydi.  Eline aldığı küçük buket—beyaz papatyalar—onun içinde kopan fırtınaya hiç uymuyordu. Ne kadar sade görünse de, Doruk’un içinde karmaşık bir şeyler oluyordu: endişe, heyecan, umut ve belki de biraz korku. O günün sabahı erkenden uyanmıştı. Aynanın karşısında defalarca saçını düzeltmiş, gömleğini kaç kez değiştirdiğini hatırlamıyordu bile.  Elif’in geleceğini biliyordu. Gelecekti, geleceğini söylemişti. Ama insan böyle bir günü yaşarken hiçbir şeyden emin olamıyordu. Ve şimdi, Küçükçekmecede bir köşe başında, elinde çiçeklerle bekliyordu. Her geçen dakika, kalp atışlarını hızlandırıyordu.  Çevreden geçen insanlar, elindeki çiçeklere ve gergin duruşuna bakıyor; ama kimse Doruk’un içinden geçenleri bilmiyordu.  Sadece o köşeden Elif'in dönmesini bekliyordu. Ve o an... O an geldi."
+      },
+      {
+        title: "O An",
+        content: "Elif köşeyi döndü.  Uzaktan yürüyordu. Saçları omzundan aşağı dökülüyor, üzerindeki siyah kabanı rüzgârda hafifçe dalgalanıyordu.  Doruk'un gözleri bir an bulanıklaştı. Karnında tanıdık bir sızı başladı. O eski, unutulmuş sandığı his: Kelebekler.  Ama bu sefer ürkek değil, güçlüydüler.  Kalbinin içine çarpıyor, yıllar önce başlamış ama yarım kalmış bir hikâyenin tekrar yazıldığını fısıldıyorlardı. Elif de onu gördü. İlk başta duraksadı. Göz göze geldiler.  Sanki dünya o anda sessizliğe gömüldü. İnsanlar, arabalar, korna sesleri… Her şey uzakta bir uğultuya dönüştü.  İkisi arasında görünmez bir ip vardı, yavaşça çekiliyor, adımlarını birbirlerine yaklaştırıyordu. Ve sonra...  Doruk bir adım attı. Elif de.  Derken, elleri çiçekleri bırakmadan kollarını açtı Doruk.  Elif, tereddütsüz sarıldı ona. Sıkı. Kalbini koyar gibi.  Ve Doruk, onu sanki yıllardır bekliyormuş gibi sardı. Sokak ortasında, İstanbul’un kalabalığında, herkesin gözü önünde...  Ama onlar için dünya durmuştu.  O sarılma, bir vedanın değil, yeni bir başlangıcın ifadesiydi.  Yaraları sarmaya gerek duymadan, eksikleri konuşmadan, sadece “buradayım” demenin en saf haliydi."
+      },
+      {
+        title: "O An",
+        content: "Doruk, Elif’in saçlarına yüzünü gömdü.  Bir fısıltı gibi çıktı ağzından: 'Hoş geldin, Elif.' Elif hiçbir şey demedi. Gözlerini kapattı, derin bir nefes aldı.  Amber, lavanta ve Doruk’un teni…  Bir anda hepsi birbirine karıştı. Sokak artık onların sahnesiydi.  İstanbul artık sadece bir şehir değildi.  O an, bir ömrün mihenk taşıydı. O sarılış… Belki de yılların özeti gibiydi. Ne anlatılsa eksik, ne susulsa fazla. Ama bazı günler vardır; bir ömür anlatılacak kadar değerli. Ve bu, o günlerden biriydi. Daha yeni başlıyordu. Sarılmadan sonra hiçbir şey konuşmadılar. Bir süre öylece kaldılar. Kalp atışları, tenlerinin sıcaklığı, nefeslerinin uyumu... Her şey konuşulması gerekenin çok ötesindeydi. Doruk’un çiçekleri hâlâ elindeydi. Elif’in saçları hâlâ rüzgârdaydı. Ama artık aralarında zaman yoktu.  O an, sadece ikisinin bildiği bir saate aitti. 'Ben seni bir yere götürmek istiyorum' dedi Elif usulca.  Doruk cevap vermedi, sadece başını salladı. Arabaya bindiler. İstanbul’un gürültüsü yavaş yavaş arkada kalırken, yollar kıvrılarak kuzeye uzandı. Elif, Atatürk Ormanı’nın daha az bilinen bir patikasını seçmişti. Sessizlik, hafif müzik ve yolda duyulan kuş sesleri arasında bir zaman yolculuğu gibi ilerlediler.  İkisi de farkındaydı: Bu, sıradan bir gün değildi."
+      },
+      {
+        title: "O An",
+        content: "Ormanın girişinde arabadan indiler.  Ağaçların arasına yürümeye başladılar, yaprakların arasından süzülen ışık tenlerine vurdukça sanki mevsim bile ikisine göre şekilleniyordu.  Elif, doğayı seviyordu. Sessizliği, huzuru, toprağın kokusunu. Doruk ise onun doğayla uyumuna hayrandı.  Bir süre ellerini cebine sokarak yürüdü ama Elif’in parmakları yanındayken, boş durmak mümkün değildi. Bir noktada, Doruk yavaşladı ve Elif’in elini tuttu.  O an, dünyadaki tüm telaşlar geride kaldı. İlk defa el ele...  Ve ilk defa bu kadar sessiz ama bu kadar bütün... Yürüyerek ormanın içindeki sessiz bir açıklığa vardılar. Ağaçların arasında, yıpranmış ama sağlam bir ahşap masa ve iki bank duruyordu. Kimsenin onları tanımadığı, yalnızca kuşların ve rüzgârın eşlik ettiği bu yerde, kendileri olabilmenin konforu içinde oturdular. Doruk yanına getirdiği sırt çantasını açtı ve içinden küçük, sade ama özenle hazırlanmış bir kutu çıkardı. Elif önce anlam veremedi. Doruk, gülümseyerek kutuyu masanın üzerine koydu. 'Senin sevdiğin şeylerden birkaç tanesi' dedi. Elif kutuyu açtığında gözleri büyüdü. İçinde küçük küçük paketlenmiş hediyeler vardı: Kurutulmuş lavanta demeti, en sevdiği şiir kitabından koparılmış bir sayfa, çocukken sevdiğini söylediği o karamel şekerlerden iki tane, kendi elleriyle yaptığı minik bir tahta anahtarlık ve bir de eski bir polaroid—birlikte oldukları eski bir günden, Elif’in habersizce gülümsediği bir an."
+      },
+      {
+        title: "Bir Mesajla Başlayan",
+        content: "Elif hiçbir şey söylemedi. Uzun süre sadece baktı. Sonra gözlerini Doruk’a çevirdi, kelimelere gerek duymadan. Doruk’un bakışlarında bir şey vardı o an: hem gurur hem de çekingenlik.  'Şimdilik küçük şeyler' dedi. 'Ama seni gerçekten dinlediğimi bil istedim.' Elif gülümsedi.  O gülümsemenin içinde bin kelime, bin teşekkür vardı. Göz göze geldiler. Uzun uzun.  Daha önce hiç yaşanmamış bir şey gibiydi bu. Ne geçmişteki yaraların, ne gelecekteki endişelerin anlamı vardı.  Sadece 'şimdi' vardı. 'Şu an,' dedi Doruk, 'hayatımın içinde olduğuna inandığım ilk gerçek an olabilir.' Elif bir şey demedi. Gözlerini uzaklara çevirdi. Ama gülümsüyordu.  Doruk bu gülümsemeyi daha önce de görmüştü. Ama bu başka bir şeydi.  Kırılgan ama cesur. Uzak ama ulaşılabilir. Sanki 'yaklaş ama dikkatli ol' diyordu. 'Ne güzelmiş burası' dedi Doruk sonunda.  'Senle daha güzel' dedi Elif. Ormanda geçirilen saatler boyunca çok fazla şey anlatmadılar birbirlerine. Ama bu defa konuşmamaları eksik değil, dolu hissettirdi.  Kimi zaman Doruk bir espri yaptı, Elif gözlerini devirdi ama gülümsedi.  Kimi zaman Elif çocukluğunda ormanda kozalak toplayışını anlattı, Doruk onu dinlerken istemsizce tebessüm ediyordu. Doruk, Elif’e dönüp, 'Bugün bir rüya gibiydi' dedi.  Elif başını salladı. 'Ve uyanmak istemiyorum.' Doruk o an hiçbir şey demedi."
+      },
+      {
+        title: "Bir Mesajla Başlayan",
+        content: "Çünkü bazı anlar kelimelerle bozulmamalıydı. Gün, ağaçların arasından süzülerek yavaşça veda ediyordu. Gökyüzü turuncuya çalarken, orman loş bir huzura büründü. Sessizlik ağırlaştı; sadece rüzgârın yapraklarla konuştuğu o ince ses vardı. Elif ve Doruk yürümeyi bıraktılar. Sanki adımlar bile bu anı bozmak istememişti. Bir ağacın önünde durdular; gövdeleri eski, ama duruşları sanki bu an için seçilmişti. Elif, başını hafifçe Doruk’a çevirdi. Göz göze geldiler. O an, hiçbir şeyin aceleye gelmediği bir zaman boşluğundaydılar. Ne geçmişin yükü vardı omuzlarında, ne de gelecekten korku. Doruk, usulca bir adım yaklaştı. Elif’in yüzünde o tanıdık ama yepyeni gülümseme vardı. 'Yaklaş ama dikkatli ol' diyen gülümseme artık sessizce fısıldıyordu:  'Tam zamanı...' Doruk, Elif’in yüzüne bir an baktı—gözlerine, yanaklarına, sonra dudaklarına.  Ve sonunda, hiçbir şey söylemeden, özenle, yavaşça onu öptü. İlk temas, rüzgârın yapraklara değmesi kadar hafifti.  Kısa ama derin.  Sade ama unutulmaz. Elif gözlerini kapatmıştı. Kalbi sessiz ama güçlü atıyordu. Öpücük bittiğinde gözlerini açtı ve Doruk’a baktı.  İkisi de gülümseyerek birbirlerine sarıldılar.  Sessizliğin içinde yankılanan tek şey artık içlerinde büyüyen o hisdi. O an, yalnızca bir öpücük değildi.  Bir kabul edişti.  Bir başlangıçtı. Ve orman, bu sırrı sessizce sakladı."
+      },
+      
     ];
 
     let currentBookPage = 0;
