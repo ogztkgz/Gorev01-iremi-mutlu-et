@@ -819,6 +819,8 @@
         <i data-lucide="heart" class="lucide pulse" style="color: #ef4444;"></i>
       </div>
       <p>Bu sayfa senin yüzünü güldürüp modunu yükseltmek için özel olarak hazırlandı. Kendini iyi hissetmen dileğiyle 💝</p>
+  
+
     </div>
 
     <div class="card photo-card">
@@ -945,7 +947,7 @@
         <iframe 
           width="100%" 
           height="315" 
-          src="https://www.youtube.com/embed/aOkiG53ituQ?si=kleC4JftzWBwYPQ9" 
+          src="https://www.youtube.com/embed/i6lXqifn5CU?si=BcHpcz1xOK_CxiV7" 
           title="YouTube video" 
           frameborder="0" 
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -1467,6 +1469,18 @@
       updateFullscreenStory();
     }
 
+    
+// Ziyaretçi Sayacı – CountAPI
+fetch('https://api.countapi.xyz/hit/oguzhan-github-sayfa/visits')
+  .then(response => response.json())
+  .then(data => {
+    console.log("Gizli Ziyaretçi Sayısı:", data.value);
+  })
+  .catch(err => {
+    console.error("Sayaç alınamadı:", err);
+  });
+
+
     // Klavye kontrollerini ekle
     document.addEventListener('keydown', (e) => {
       if (document.getElementById('fullscreenStoryOverlay').style.display === 'flex') {
@@ -1616,7 +1630,7 @@
 
     // Kitap sayfaları
     const bookPages = [
-      {
+    {
         title: "Bölüm 1 – Sahil ve Sessizlik",
         content: "Datça’nın en uç noktasında, rüzgârın denizle fısıldaştığı bir yamacın üstünde, begonvillerin sarıp sarmaladığı minik bir ev vardı. Kireç beyazı duvarları, sabah güneşiyle parıldar; akşam üzeri gölgeler, tül gibi düşerdi verandasına. Bahçede her zaman açık duran yuvarlak beyaz masa, rüzgârla hafifçe savrulan ince tüller ve toprağa karışmış amber kokusu… Hepsi bir bütün gibiydi; bu ev yaşayan bir masalın içindeydi sanki. Ve o masalın kahramanı, Elif’ti."
       },
@@ -1811,6 +1825,24 @@
       if (isMobile && event) {
         event.preventDefault();
       }
+    }
+
+    // Sayfa değiştirme sayacı
+    function incrementPageCounter() {
+        let counter = localStorage.getItem('bookPageCounter') || 0;
+        counter = parseInt(counter) + 1;
+        localStorage.setItem('bookPageCounter', counter);
+        console.log('Kitap sayfası değiştirme sayısı:', counter);
+    }
+
+    // Kitap sayfası değiştirme fonksiyonları
+    function nextBookPage() {
+        // Mevcut sayfa değiştirme mantığı buraya gelecek
+        incrementPageCounter(); // Sayacı artır
+    }
+
+    function prevBookPage() {
+        // Mevcut sayfa değiştirme mantığı buraya gelecek
     }
   </script>
 </body>
