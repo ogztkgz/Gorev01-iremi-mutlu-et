@@ -1471,7 +1471,7 @@
 
     
 // Ziyaretçi Sayacı – CountAPI
-fetch('https://api.countapi.xyz/hit/oguzhan-github-sayfa/visits')
+fetch('https://api.countapi.xyz/hit/Gorev01-iremi-mutlu-et/visits')
   .then(response => response.json())
   .then(data => {
     console.log("Gizli Ziyaretçi Sayısı:", data.value);
@@ -1827,23 +1827,7 @@ fetch('https://api.countapi.xyz/hit/oguzhan-github-sayfa/visits')
       }
     }
 
-    // Sayfa değiştirme sayacı
-    function incrementPageCounter() {
-        let counter = localStorage.getItem('bookPageCounter') || 0;
-        counter = parseInt(counter) + 1;
-        localStorage.setItem('bookPageCounter', counter);
-        console.log('Kitap sayfası değiştirme sayısı:', counter);
-    }
-
-    // Kitap sayfası değiştirme fonksiyonları
-    function nextBookPage() {
-        // Mevcut sayfa değiştirme mantığı buraya gelecek
-        incrementPageCounter(); // Sayacı artır
-    }
-
-    function prevBookPage() {
-        // Mevcut sayfa değiştirme mantığı buraya gelecek
-    }
+  
   </script>
 </body>
 </html>
