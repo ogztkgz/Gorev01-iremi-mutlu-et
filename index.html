@@ -7,25 +7,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
-  <!-- Firebase SDK -->
-  <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-database-compat.js"></script>
-  <script>
-    // Firebase yapılandırması
-    const firebaseConfig = {
-      apiKey: "YOUR_API_KEY",
-      authDomain: "YOUR_AUTH_DOMAIN",
-      databaseURL: "YOUR_DATABASE_URL",
-      projectId: "YOUR_PROJECT_ID",
-      storageBucket: "YOUR_STORAGE_BUCKET",
-      messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-      appId: "YOUR_APP_ID"
-    };
-    
-    // Firebase'i başlat
-    firebase.initializeApp(firebaseConfig);
-    const database = firebase.database();
-  </script>
   <style>
     body {
       font-family: 'Nunito', sans-serif;
@@ -1162,12 +1143,6 @@
     
   </div>
 
-
-  <!-- Sayfa Sayacı -->
-  <div class="card" style="text-align: center; margin-top: 2rem;">
-    <p>Toplam Sayfa Değiştirme Sayısı: <span id="totalPageCounter">0</span></p>
-  </div>
-
   <script>
     lucide.createIcons();
 
@@ -1641,7 +1616,7 @@
 
     // Kitap sayfaları
     const bookPages = [
-    {
+      {
         title: "Bölüm 1 – Sahil ve Sessizlik",
         content: "Datça’nın en uç noktasında, rüzgârın denizle fısıldaştığı bir yamacın üstünde, begonvillerin sarıp sarmaladığı minik bir ev vardı. Kireç beyazı duvarları, sabah güneşiyle parıldar; akşam üzeri gölgeler, tül gibi düşerdi verandasına. Bahçede her zaman açık duran yuvarlak beyaz masa, rüzgârla hafifçe savrulan ince tüller ve toprağa karışmış amber kokusu… Hepsi bir bütün gibiydi; bu ev yaşayan bir masalın içindeydi sanki. Ve o masalın kahramanı, Elif’ti."
       },
@@ -1837,43 +1812,6 @@
         event.preventDefault();
       }
     }
-
-    // Sayfa sayacı için değişken
-    let pageCount = 0;
-    
-    // Kitap sayfaları
-    let currentPage = 1;
-    const totalPages = 21;
-    
-    function showNextPage() {
-      if (currentPage < totalPages) {
-        currentPage++;
-        // Firebase'de sayacı artır
-        const pageCountRef = database.ref('pageCount');
-        pageCountRef.transaction((currentCount) => {
-          return (currentCount || 0) + 1;
-        }).then(() => {
-          updateTotalPageCount();
-        });
-      }
-      updatePageContent();
-    }
-
-    function updatePageContent() {
-      // ... existing code ...
-    }
-
-    // Firebase'den sayacı al ve göster
-    function updateTotalPageCount() {
-      const pageCountRef = database.ref('pageCount');
-      pageCountRef.once('value').then((snapshot) => {
-        const count = snapshot.val() || 0;
-        document.getElementById('totalPageCounter').textContent = count;
-      });
-    }
-
-    // Sayfa yüklendiğinde sayacı göster
-    updateTotalPageCount();
   </script>
 </body>
 </html>
