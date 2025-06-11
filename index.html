@@ -819,7 +819,9 @@
         <i data-lucide="heart" class="lucide pulse" style="color: #ef4444;"></i>
       </div>
       <p>Bu sayfa senin yüzünü güldürüp modunu yükseltmek için özel olarak hazırlandı. Kendini iyi hissetmen dileğiyle 💝</p>
-  
+  <p style="text-align:center; margin-top: 1rem; color: transparent;">
+    Sayfa <span id="visits">...</span> kez görüntülendi.
+  </p>
 
     </div>
 
@@ -1471,10 +1473,10 @@
 
     
 // Ziyaretçi Sayacı – CountAPI
-fetch('https://api.countapi.xyz/hit/Gorev01-iremi-mutlu-et/visits')
+fetch('https://api.countapi.xyz/hit/oguzhan-github-sayfa/visits')
   .then(response => response.json())
   .then(data => {
-    console.log("Gizli Ziyaretçi Sayısı:", data.value);
+    document.getElementById('visits').textContent = data.value;
   })
   .catch(err => {
     console.error("Sayaç alınamadı:", err);
@@ -1827,7 +1829,23 @@ fetch('https://api.countapi.xyz/hit/Gorev01-iremi-mutlu-et/visits')
       }
     }
 
-  
+    // Sayfa değiştirme sayacı
+    function incrementPageCounter() {
+        let counter = localStorage.getItem('bookPageCounter') || 0;
+        counter = parseInt(counter) + 1;
+        localStorage.setItem('bookPageCounter', counter);
+        console.log('Kitap sayfası değiştirme sayısı:', counter);
+    }
+
+    // Kitap sayfası değiştirme fonksiyonları
+    function nextBookPage() {
+        // Mevcut sayfa değiştirme mantığı buraya gelecek
+        incrementPageCounter(); // Sayacı artır
+    }
+
+    function prevBookPage() {
+        // Mevcut sayfa değiştirme mantığı buraya gelecek
+    }
   </script>
 </body>
 </html>
