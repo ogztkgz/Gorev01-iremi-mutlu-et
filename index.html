@@ -955,7 +955,7 @@
         <iframe 
           width="100%" 
           height="315" 
-          src="https://www.youtube.com/embed/Yo38MzxlW1s?si=imgDY6tyJy-yKrV6" 
+          src="https://www.youtube.com/embed/cogTig8JVsI?si=sLbUvF7Q0_rLRxun" 
           title="YouTube video" 
           frameborder="0" 
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -1029,22 +1029,30 @@
     <div class="container">
       <div class="siir-bolumu">
         <div class="siir-dekor siir-dekor-sol">❀</div>
-        <h2 class="siir-baslik">Anlarsın</h2>
+        <h2 class="siir-baslik">Bir Gün</h2>
         <p class="siir-metin">
-          Bir gece habersiz bize gel
-          Merdivenler gıcırdamasın
-          Öyle yorgunum ki hiç sorma
-          Sen halimden anlarsın
-          Sabahlara kadar oturup konuşalım
-          Kimse duymasın
-          Mavi bir gökyüzümüz olsun
-          Kanatlarımız dokunarak uçalım
-          İnsanlardan buz gibi soğudum
-          İşte yalnız sen varsın
-          Öyle halsizim ki hiç sorma
-          Anlarsın
+          Apansız uyanırsan gecenin bir yerinde
+          Gözlerin uzun uzun karanlığa dalarsa
+          Bir sıcaklık duyarsan üşüyen ellerinde
+          Ve saatler gecikmiş zamanları çalarsa
+          Bil ki seni düşünüyorum
+          Bir vapur yanaşırsa rıhtımına bin, acil
+          Örtün karanlıkları masmavi denizlerde
+          Ve dinle kalbimi bak nasıl çarpıyor nasıl
+          O bütün özlemlerin koyulaştığı yerde
+          Bil ki seni bekliyorum
+          Bir sabah gün doğarken aç perdelerini, bak
+          Sevinçle balkonuna konuyorsa martılar
+          Kendini tadılmamış derin bir hazza bırak
+          Dökülsün dudağından en umutlu şarkılar
+          Bil ki seni istiyorum
+          Gecelerden bir gece uyanırsan apansız
+          Uzaklarda elemli, garip bir kuş öterse
+          Bir ceylan ağlıyorsa dağlarda yapayalnız
+          Ve bir gün kabrimde bir kara gül biterse
+          Bil ki SENİ SEVİYORUM
         </p>
-        <div class="siir-yazar">- Cahit Külebi</div>
+        <div class="siir-yazar">- Ümit Yaşar Oğuzcan</div>
         <div class="siir-dekor siir-dekor-sag">❀</div>
       </div>
     </div>
@@ -1056,7 +1064,7 @@
         Günün Kitap Alıntısı
       </h2>
       <div style="text-align: center; margin-bottom: 1rem;">
-        <img src="kitap_alinti_1.jpg" alt="Kitap Alıntısı Görseli" style="max-width: 100%; height: auto; border-radius: 0.5rem; margin-top: 1rem;">
+        <img src="kitap_alinti_2.jpeg" alt="Kitap Alıntısı Görseli" style="max-width: 100%; height: auto; border-radius: 0.5rem; margin-top: 1rem;">
       </div>
       <p style="font-family: 'Caveat', cursive; font-size: 1.4rem; line-height: 1.6; color: #5b21b6; text-align: center; white-space: pre-line;">
         ""
@@ -1074,7 +1082,9 @@
         <div style="flex: 1;">
           <p style="font-size: 1.1rem; color: #5b21b6;">
             Gel birlikte Elifin hayali ve hikayesine bakalım✨
-            devamı aşağıda, en son girdiğinde hepsini okuduysan eğer sayfa 46 da kaldın 47 den devam edebilirsin. :)
+            devamı aşağıda
+            tek tek sayfaları gitmekle uğraşma diye istediğin sayfaya gidebileceğin bir buton ekledim 
+            son girdiğinde hepsini okuduysan 53 de kaldın 54 ten devam edebilirsin :)
           </p>
         </div>
       </div>
@@ -1092,7 +1102,11 @@
         <div id="bookContent" class="book-content">
           Datça'nın en uç noktasında, rüzgârın denizle fısıldaştığı bir yamacın üstünde, begonvillerin sarıp sarmaladığı minik bir ev vardı. Kireç beyazı duvarları, sabah güneşiyle parıldar; akşam üzeri gölgeler, tül gibi düşerdi verandasına. Bahçede her zaman açık duran yuvarlak beyaz masa, rüzgârla hafifçe savrulan ince tüller ve toprağa karışmış amber kokusu… Hepsi bir bütün gibiydi; bu ev yaşayan bir masalın içindeydi sanki. Ve o masalın kahramanı, Elif'ti.
         </div>
-        <div class="book-page-number" id="bookPageNumber">Sayfa 1/53</div>
+        <div class="book-page-number" id="bookPageNumber">Sayfa 1/57</div>
+      </div>
+      <div style="text-align:center; margin: 1rem 0;">
+        <input type="number" id="gotoPageInput" min="1" max="53" placeholder="Sayfa No" style="width: 80px; padding: 0.3rem;">
+        <button class="button" onclick="gotoBookPage()">İstediğin Sayfaya Git</button>
       </div>
       <div class="book-navigation">
         <button id="prevBookPage" class="book-nav-button" onclick="prevBookPage()" disabled>
@@ -1834,7 +1848,7 @@
       },
       {
         title: "Bölüm 16 – İki Balkon Arası",
-        content: "Doruk, Elif’i tekrar gördüğü o ilk andan beri hiçbir şey eskisi gibi değildi. Kalbinde unuttuğunu sandığı o telaş, yeniden uyanmıştı. Onu karşısında öylece dururken görmek; gülümseyişinin hâlâ aynı, sesiyle birlikte geçen her şeyi darmadağın edişi… bütün düzenini yerle bir etmişti. İzmir’in kalabalığı, içinde büyüttüğü hayal kırıklıkları ve sürekli ertelediği hayatı… hepsi birden anlamını yitirmişti. Ve işte o sabah, kesin olarak buraya yerleşmeye karar verdiğini fark etti. ”Yeniden başlıyoruz… ama bu kez başka bir ritimle.” Kendini sokağa atmıştı, sabah serinliği hâlâ sokakların üzerinde gezinmekteydi. Denizden gelen hafif yosun kokusu ve kuş sesleriyle örtüşen dinginlik, içini bambaşka bir huzurla doldurmuştu. Yavaşça yürüdü, evleri izledi, sokaklardaki çiçekli balkonlara baktı. Her yer zamanın dışındaymış gibi hissediliyordu. Bir ara yol kenarında küçük bir kahvede oturup çay söyledi. Masa örtüsündeki eski çiçek desenleri, bardağın camındaki buğu, içeriden gelen radyo sesi… Hepsi başka bir dünyanın içindeymiş gibi hissettirmişti Doruk’a. Tam da o sırada, caddenin biraz ilerisinde, begonvillerin sardığı taş bir evi gördü. Evin bir tarafında yaşanmışlık, diğer tarafında ise yeni bir hayat başlama isteği vardı. Yan evin kapısı açıktı. Bahçede bir kadın çamaşır asıyordu. Saçları kısacık kesilmişti, gözleri keskin ama sıcak, elleri telaşsızdı. Kadın onu fark etti. Hafifçe gülümsedi. ”Ev mi arıyorsun evlat?” diye sordu. Doruk başını salladı. ”Buraya taşınmak istiyorum. Sessiz bir yer... kalbimi yormayacak bir sokak arıyorum.” Kadın gülümsedi. ”Ben Münevver. İki yandaki ev benim oğlumun evi. Uzun süredir boş duruyor. İstersen birlikte bakalım.” Evi gezdiklerinde, Doruk sadece duvarlara değil, hatıralara da dokunduğunu hissetti. Taş duvarların arasına sıkışmış sessizlik, yeni bir hikâyeye aç gibi bekliyordu. Yatak odasındaki pencere doğrudan Elif’in mutfağına bakıyordu. Elif buna kızabilirdi, Doruk bunun farkındaydı ama kararından dönmedi. “Buraya taşınmak istiyorum,” dedi kesin bir sesle. Münevver Hanım içten bir kahkaha attı. ”Demek o kadar kesin… Peki evlat, hoş geldin mahallemize.”"
+        content: "Doruk, Elif’i tekrar gördüğü o ilk andan beri hiçbir şey eskisi gibi değildi. Kalbinde unuttuğunu sandığı o telaş, yeniden uyanmıştı. Onu karşısında öylece dururken görmek; gülümseyişinin hâlâ aynı, sesiyle birlikte geçen her şeyi darmadağın edişi… bütün düzenini yerle bir etmişti. İzmir’in kalabalığı, içinde büyüttüğü hayal kırıklıkları ve sürekli ertelediği hayatı… hepsi birden anlamını yitirmişti. Ve işte o sabah, kesin olarak buraya yerleşmeye karar verdiğini fark etti. ”Yeniden başlıyoruz… ama bu kez başka bir ritimle.” Kendini sokağa atmıştı, sabah serinliği hâlâ sokakların üzerinde gezinmekteydi. Denizden gelen hafif yosun kokusu ve kuş sesleriyle örtüşen dinginlik, içini bambaşka bir huzurla doldurmuştu. Yavaşça yürüdü, evleri izledi, sokaklardaki çiçekli balkonlara baktı. Her yer zamanın dışındaymış gibi hissediliyordu. Bir ara yol kenarında küçük bir kahvede oturup çay söyledi. Masa örtüsündeki eski çiçek desenleri, bardağın camındaki buğu, içeriden gelen radyo sesi… Hepsi başka bir dünyanın içindeymiş gibi hissettirmişti Doruk’a. Tam da o sırada, caddenin biraz ilerisinde, begonvillerin sardığı taş bir evi gördü. Evin bir tarafında yaşanmışlık, diğer tarafında ise yeni bir hayat başlama isteği vardı. Yan evin kapısı açıktı. Bahçede bir kadın çamaşır asıyordu. Saçları kısacık kesilmişti, gözleri keskin ama sıcak, elleri telaşsızdı. Kadın onu fark etti. Hafifçe gülümsedi. ”Ev mi arıyorsun evlat?” diye sordu. Doruk başını salladı. ”Buraya taşınmak istiyorum. Sessiz bir yer... kalbimi yormayacak bir sokak arıyorum.” Kadın gülümsedi. ”Ben Münevver. İki yandaki ev benim oğlumun evi. Uzun süredir boş duruyor. İstersen birlikte bakalım.” Evi gezdiklerinde, Doruk sadece duvarlara değil, hatıralara da dokunduğunu hissetti. Taş duvarların arasına sıkışmış sessizlik, yeni bir hikâyeye aç gibi bekliyordu. Yatak odasındaki pencere doğrudan Elif’in mutfağına bakıyordu. İrem buna kızabilirdi, Doruk bunun farkındaydı ama kararından dönmedi. “Buraya taşınmak istiyorum,” dedi kesin bir sesle. Münevver Hanım içten bir kahkaha attı. ”Demek o kadar kesin… Peki evlat, hoş geldin mahallemize.”"
       },
       {
         title: "İki Balkon Arası",
@@ -1844,7 +1858,22 @@
         title: "İki Balkon Arası",
         content: "Elinde tuttuğu kahve kupasını hafifçe kaldırarak gülümsedi. “Günaydın komşu” dedi yumuşak bir sesle. Elif'in kaşları hafifçe kalktı ama bir tebessüm belirdi yüzünde. “Günaydın” dedi. Sesi hem tanıdık, hem uzak gibiydi. Hem yıllar öncesini çağırıyor, hem bugünün çizgilerinde yeni bir renge bürünüyordu. Doruk iki adım daha attı. Bahçelerin arasındaki alçak duvarın yanında durdu. Aralarındaki mesafe, konuşmaları kadar sessizdi. “Geldiğimden beri ‘nasılsın’ diyemedim. Belki şimdi bir ‘merhaba’ demenin zamanı gelmiştir diye düşündüm.” Elif başını eğdi. Saksıdaki toprağı parmaklarıyla karıştırmaya devam etti. Bu sessizlik, eskiye dair çok şeyin altını çiziyor gibiydi. Ama sonunda yavaşça doğrulup gözlerine baktı. “İyiyim. Sen?” “Ben de... burada daha iyi hissediyorum. Sanki yıllar sonra nefes alabildiğim bir yere geldim.” Elif bir şey demedi. Doruk da sustu. Ama bu sessizlik artık acıtan değil, sarıp sarmalayan bir sessizlikti. Tam o anda Münevver Hanım sokağın köşesinden elleri dolu poşetlerle çıkageldi. Doruk hemen yanına gidip poşetleri aldı. Kadın gülümseyerek, “Ay Doruk, evladım! Sağ ol, az kalsın belim kopacaktı,” dedi. Elif içeriye yönelmişti ama Münevver Hanım onun sesini duyunca seslendi: “Elifçim! Senin için de kek getirdim, limonlu. Geçen sefer çok sevmiştin ya.” Elif geri döndü, başıyla teşekkür etti. Doruk, poşetleri verandaya bırakırken bir an göz göze geldiler. Elif'in gözleri hâlâ ketumdu. Ama o ketumlukta çözülmeye hazır bir kıvrım vardı sanki. Doruk uzaklaşmadan önce hafifçe başını eğdi. “Sadece... bil istedim, burada olmamın nedeni tesadüf değil.” Elif gözlerini kaçırdı. Buna verecek bir cevabı yoktu. Henüz… O günün geri kalanı boyunca Elif’in kafasında Doruk’un o son sözü dönüp durdu. “Tesadüf değil“ Ne kadar da net, ne kadar da çıplak bir cümleydi. Ama Elif geçmişin yorgunluğunu hâlâ taşıyordu. Doruk’a bakarken kalbi hâlâ çarpıyordu, evet. Ama o çarpıntının ardından gelen korkuyu da hissediyordu. Akşam olduğunda Doruk evinin verandasında tek başına oturuyordu. Gökyüzü kızılın tonlarına bürünmüş, martılar uzaklara doğru uçuyordu. Elindeki kitap açık ama gözleri satırların ötesindeydi. Elif içerideydi. Işığı yanıyordu. Silüeti, perdelerin ardından gölgeleniyordu. Doruk derin bir nefes aldı. Bu kez sabırsız değildi. Zamanın akmasına, kalplerin çözülmesine izin verecekti. İçinden yalnızca bir cümle geçti: “Sabırla bekleyeceğim seni… çünkü sen buna değersin.” Ve o gece kasaba, sessizce bir başka başlangıcın ayak seslerini dinliyordu."
       },
-      
+      {
+        title: "Bölüm 17 – Yan Yana",
+        content: "Elif o sabah erkenden uyanmıştı. Balım Kafe’yi açmak için her zaman yaptığı gibi önce mutfağa girdi, kahve makinesini çalıştırdı, sonra vitrin camlarını sildi. Her şey düzenli olmalıydı. Bu kafe, sadece geçim kapısı değil, aynı zamanda kendine kurduğu yeni hayatın merkezindeydi. Ama o gün, bir şeyler farklıydı. Camdan dışarı baktığında, Doruk’un verandasında oturmadığını fark etti. Genellikle sabahları erken kalkar, kitabını alıp balkonuna çıkardı. Bugün ortalarda yoktu. İçinden geçen “umarım iyi bir şeydir” düşüncesini bastırmaya çalıştı. Henüz sandalyeleri düzenliyordu ki, kafeye açılan kapı tıngırdayarak açıldı. Başını çevirdiğinde, Doruk’un içeri girdiğini gördü. Üzerinde sade, beyaz bir tişört vardı. Gözlerinde o tanıdık ifade: kararlı ama telaşsız. “Elif,” dedi gülümseyerek. “Bir şey teklif etmeye geldim.” Elif, sandalyesini düzeltmeye devam ederek karşılık verdi. “Bugünlük filtre kahve mi deneyeceksin yoksa limonataya mı geçtin?” Doruk kısa bir kahkaha attı. “Ne alacağımı henüz bilmiyorum. Ama belki biraz çalışırım önce.” Elif kaşlarını kaldırdı. “Ne çalışması?” Doruk derin bir nefes aldı, masalardan birine elini dayadı. “Seninle. Kafede. Yardımcı olayım istiyorum.” Elif’in yüzü bir anda ciddileşti. “Doruk… Bu senin işin değil.” “Biliyorum,” dedi. “Zaten para kazanmak için değil. Burada bir düzen kuruyorsun ve ben sadece... yanında olmak istiyorum. El atmak, yükünü biraz hafifletmek.” Elif bir an sustu. Bakışları, onun niyetini yoklamaya çalışır gibiydi. “Doruk, bu bir oyun değil. Bu benim hayatım.” Doruk başını salladı. “Biliyorum. Zaten o yüzden ciddiyim.” Elif elindeki bezle tezgâhı silmeye devam etti. Gönülsüzdü, evet. Ama Doruk’un sesi, kelimeleri, vurguları… Hepsi sahici geliyordu. “Şimdilik sadece masaları silersin,” dedi usulca. Doruk göz kırptı. “Usta bir masa siliciyimdir. Üniversitede her sabah ben temizlerdim mutfağı.” İçeriye gülümseme sinmişti. Elif istemeden de olsa bir tebessümle cevap verdi. “Seninle kalanların sabrı takdire şayanmış.” Gün ilerledikçe, Doruk gerçekten de sadece masaları silmekle kalmadı. Müşterilerle selamlaştı, gelen çocuklara ufak şakalar yaptı, yaşlı teyzelere sandalyelerini çekti. İletişimi içtendi, samimiydi. Ve fark ettirmeden, Balım Kafe’nin ruhuna dahil olmaya başlamıştı. Öğleye doğru kalabalık artmıştı. Elif mutfakta siparişleri hazırlarken dışarıdan kahkahalar yükseliyordu. Merak edip çıktığında, Doruk’un yaşlı bir amcayla domino taşı dizdiğini, küçük bir kızın defterine resim çizdiğini ve içeridekilerin kahveyle birlikte gülümsemeler paylaştığını gördü."
+      },
+      {
+        title: "Yan Yana",
+        content: "İkindiye doğru bir kadın müşteri, bahçedeki eski sandalyenin bir bacağının gevşek olduğunu söylediğinde, Doruk hemen tornavidayı alıp sorunu çözdü. Ve Elif bunu uzaktan izlerken hissetti: Doruk bu sefer yalnızca yanında değil, yükün içindeydi. Akşamüstü yaklaştıkça, işler yavaşladı. Güneş denize doğru eğilirken kafenin gölgesi taş duvara vurmuş, etrafı o altın rengi saatlerin huzuru sarmıştı. Doruk bir çay aldı, bahçedeki en köşe masaya oturdu. Elif de yanına geldi, elinde iki dilim limonlu kekle. Sessizce oturdular. “Yoruldun mu?” diye sordu Elif. Doruk başını iki yana salladı. “Hayır... hatta uzun zamandır bu kadar rahat hissetmemiştim. Kafam da kalbim de.” Elif gözlerini kaçırdı. Cevap vermedi ama Doruk ekledi: “Seninle aynı alanı paylaşmak... bana iyi geliyor.” O anın sessizliği çok şey söylüyordu. Eskiden aynı odadayken bile birbirine uzak olan iki insan şimdi birkaç kelimeyle köprü kurabiliyordu. Birden Doruk, bir çocuk sesiyle irkildi. Kapının önünde bir kız çocuğu topunu bırakmış, Elif’e el sallıyordu. “Ben seni televizyonda görmüştüm,” dedi. Elif şaşırdı. “Televizyon mu?” “Annem seni bir dizideki kadına benzetti,” dedi ve gülümsedi. Doruk kahkahayı bastı. “Bundan sonra sana ‘Oyuncu Elif' diyeceğim.” Elif elindeki çay bardağını Doruk’a doğrulttu. “Sakın!” Ama artık yüzünde bir gülümseme vardı. Yavaş yavaş... içindeki direnç yumuşuyordu. Elif içinden geçeni fark etmeden söyledi: “Bu kafe ilk defa bu kadar canlı geldi gözüme.” Doruk o anda ona döndü. “Canlılık bulaşıcıdır. Senle başlar, sonra yayılır.” Elif, gözlerini kaçırmadan önce bir an durdu. Kalbinde istemsiz bir sızlama hissetti. Doruk, bir zamanlar olduğu gibi değildi. Değişmişti… ya da gerçekten büyümüştü. Kapanış saatine yakın Doruk, tezgâhı silerken Elif son masaları kontrol etti. Kapıya yönelirken dönüp sordu: “Yarın sabah da erken kalkabilecek misin?” Doruk döndü, göz kırptı. “Seninle çalışacaksam, horozdan önce uyanırım.” Elif o anda gülümsememek için dudağını ısırdı. Yorucuydu, karmaşıktı, belirsizdi… ama ilk defa huzurluydu. Aralarında o gün boyunca gidip gelen sessizlikler, artık birer rahatsızlık değil, dengeydi. “Elif,” dedi Doruk, sesi yumuşak. “Bugün bana bu şansı verdiğin için teşekkür ederim.” Elif başını eğdi, sesi neredeyse fısıltıydı. “Ben de teşekkür ederim... yardımların için.” Göz göze geldiklerinde, ikisi de cümleleri uzatmadı. Henüz geçmişin tam ortasına inmemişlerdi. Ama şimdi… yan yanaydılar. Ve Balım Kafe, o gün gerçekten “iki kişilik” olmuştu."
+      },
+      {
+        title: "Bölüm 18 – Huysuzluk",
+        content: "Balım Kafe yeni bir haftaya hazırlanıyordu. Mayıs ayının sonlarına gelinmişti, hava ılıman ama biraz kapalıydı. Sabahın erken saatlerinde kısa bir çiseleyen yağmur geçmiş, ardından güneş aralıklı bulutların arasından yüzünü göstermişti. Elif, verandadaki masa örtülerini değiştirirken içinden geçenleri susturmaya çalışıyordu. Doruk’un son günlerdeki hâli, hem huzur veriyor hem de garip bir şekilde dikenlerini ortaya çıkarıyordu. Bir yanıyla Doruk’un gerçekten değişmiş olduğuna inanmak istiyor, diğer yanıyla da bu “fazla düzgün” hâle temkinli yaklaşıyordu. O sabah, kasabanın tanınan yazarlarından biri olan Asuman Hanım’ın kafeye geleceğini öğrenmişti. Asuman Hanım, kısa süre önce yazdığı kitapla küçük çaplı bir ün kazanan ve köy köy dolaşarak kadınlara edebiyat atölyeleri veren zarif bir kadındı. Kahvaltı için Balım Kafe’yi seçmişti. Elif hem heyecanlı hem tedirgindi. Her şeyin düzgün gitmesini istiyordu. “Doruk,” dedi sessizce, onu içeride kahve öğütürken bulunca, “Bugün saat on buçukta Asuman Hanım geliyor. İkramlıkları, masa düzenini biraz daha özenli yapalım.” Doruk başını salladı. “Tamam. Keten örtüleri serelim. Yanına lavanta koyarız, limonlu kekten de sıcak çıkarırım.” Elif bir an durdu. Doruk’un bu kadar detaylı düşünmesi, sadece işleri öğrenmesiyle açıklanamazdı. O, dikkat kesilmişti. Ve Elif’in önem verdiği şeylere önem vermeye başlamıştı. Her şey hazırdı. Ama saat 10:40 olduğunda, Asuman Hanım hâlâ gelmemişti. 11 oldu. Yoktu. Elif hafifçe iç geçirdi. Doruk sessizce bir kahve aldı, dışarı çıktı. 11:15’te Elif telefonunu kontrol ederken, bir mesaj geldi: “Çok üzgünüm Elif Hanım. Yol çalışması nedeniyle erken dönemeyeceğim. Öğleden sonra uğrayabilirsem ararım. Sevgiler, Asuman.” Elif içinden geçenleri susturamadı. Bu kadar hazırlık… bu kadar özen… boşa mı gitmişti?"
+      },
+      {
+        title: "Huysuzluk",
+        content: "Doruk veranda kapısında duruyordu. Mesajı fark edince Elif’e yaklaştı. “Gelmedi mi?” Elif telefonu uzattı. Doruk göz gezdirdi, sonra sessizce başını salladı. İçeri dönerken, Elif onun suratını inceledi. Hiçbir öfke yoktu. Bir hayal kırıklığı vardı, ama olgun bir şekilde karşılanan türden. Eski Doruk… bu durumu bir öfke nöbetine çevirirdi. “Bizi küçümsüyorlar,” “İnsan biraz haber verir,” “Bunca hazırlık ne oldu şimdi?” gibi cümleler kafasında çınlardı. Ama şimdi Doruk, mutfağa geçip fincanları toplamaya başladı. Kırık bir tebessümle sadece şunu söyledi: “Hiç değilse lavantalar güzel kokuyor, değil mi?” Elif, onu uzun uzun izledi. “Eskiden olsa…” dedi istemsizce. Doruk ona döndü, “Elif, ben eskiden neye kızdıysam sonunda sadece kendimi yordum. Artık enerjimi olanlara harcıyorum. Olumsuzluklara değil, kalan bir huzura.” Elif’in kalbi sıkıştı. İlk kez bir değişimi bu kadar net gördü. Artık davranışlar geçmişle kıyaslandığında bile aynı kalmıyordu. Öğleden sonra, başka bir müşteri geldi. Bir turist çift, kasabayı gezmeye çıkmış, tesadüfen Balım Kafe’yi keşfetmişti. Doruk, onlara menüyü sundu, Elif ise çay hazırlarken mutfağın köşesinden izledi. Erkek, eski bir plaktan çalan müziğe takılmıştı. “Bu müzik... Guns N' Roses mı?” Doruk hemen atıldı. “Evet! ‘This i love’ Bizim burada klasikleşti biraz.” Kadın turist gülümsedi. “Burası çok huzurlu.” Doruk başını salladı. “Öyle biri tarafından kuruldu ki… buraya gelen de ister istemez sessizleşiyor.” Elif, o an kalbinde bir sızı hissetti. Doruk’un sesi gerçekti. Mekâna değil, ona güveniyordu. Eskiden hayallerine güvenen Doruk, şimdi gerçeğe saygı duyuyordu. Akşam olduğunda, Elif kapıyı kilitlerken bir süre durdu. Doruk hâlâ içeride mutfak tezgâhını siliyordu. Gün boyunca ne yüksek ses çıkarmıştı, ne de bir kez şikâyet etmişti. Sessizlikle, sükûnetle geçmişti tüm gün. Ve Elif, kendi iç sesiyle bir cümle kurdu: “Ben onunla ayrılırken, huysuzluğuna yenildim. Ama şimdi... onun sessizliğine güvenmek istiyorum.”"
+      },
       
     ];
 
@@ -1860,6 +1889,16 @@
       document.getElementById('prevBookPage').disabled = currentBookPage === 0;
       document.getElementById('nextBookPage').disabled = currentBookPage === bookPages.length - 1;
     }
+
+    function gotoBookPage() {
+  const input = document.getElementById('gotoPageInput');
+  let page = parseInt(input.value, 10);
+  if (!isNaN(page) && page >= 1 && page <= bookPages.length) {
+    currentBookPage = page - 1;
+    updateBookPage();
+      }
+    }
+
 
     function nextBookPage() {
       if (currentBookPage < bookPages.length - 1) {
